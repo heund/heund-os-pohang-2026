@@ -3,12 +3,14 @@
      SFX.key(ch)  typewriter, once per typed character        ← os.js `type`
      SFX.click()  the on-screen cursor's click / press        ← os.js `burst`
      SFX.pop()    things that pop up like speech bubbles      ← os.js `open` / `show` on [data-pop]
+     SFX.big()    bigger transitions: chapter changes, full screen, the end  ← os.js `wall` / `maximize`, talk.js ['sfx', 'big']
    M : mute / unmute (remembered on this computer).
    Browsers only start audio after one click or key press on the page, as with video sound.
 
    Files (assets/sfx):
      type.wav   Kenney · Interface Sounds · click_003 (CC0, LICENSE-kenney.txt)
      click.wav  Mixkit · Message pop alert #2354, trimmed (Mixkit Sound Effects Free License)
+     big.wav    Mixkit · Page forward single chime #1107, trimmed (Mixkit Sound Effects Free License)
    Sources and licences: assets/sfx/CREDITS.txt
    A sound with no file stays silent.
    ═══════════════════════════════════════════════════════════ */
@@ -17,8 +19,9 @@
     key: 'assets/sfx/type.wav',
     click: 'assets/sfx/click.wav',
     pop: '',
+    big: 'assets/sfx/big.wav',
   };
-  const LEVEL = { key: 0.85, click: 0.8, pop: 0.7 };
+  const LEVEL = { key: 0.85, click: 0.8, pop: 0.7, big: 0.75 };
 
   const KEY = 'heund-sfx-muted';
   let muted = false;
@@ -64,6 +67,7 @@
   }
   const click = () => play('click');
   const pop = () => play('pop', { rate: rnd(0.97, 1.03) });
+  const big = () => play('big');
 
   addEventListener('keydown', (e) => {
     if ((e.key !== 'm' && e.key !== 'M') || e.repeat || e.metaKey || e.ctrlKey || e.altKey) return;
@@ -72,7 +76,7 @@
   });
 
   window.SFX = {
-    key, click, pop,
+    key, click, pop, big,
     get muted() { return muted; },
     get state() { return ac ? ac.state : 'off'; },
     get loaded() { return Object.keys(buf); },

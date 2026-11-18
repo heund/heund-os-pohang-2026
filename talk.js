@@ -353,6 +353,7 @@ window.TALK = [
 
   { label: '감사합니다', do: [
     ['closeAll'],
+    ['sfx', 'big'],
     ['add', '#end', 'is-on'],
   ]},
 ];

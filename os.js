@@ -527,7 +527,13 @@
       return later(ctx, 400);
     },
     hide: (ctx, sel) => { $$(sel, stage).forEach((e) => e.classList.remove('is-shown')); },
-    wall: (ctx, name) => { stage.dataset.wall = name; },
+    // wallpaper = chapter colour; a new chapter gets the bigger transition sound
+    wall: (ctx, name) => {
+      if (!ctx.instant && window.SFX && stage.dataset.wall !== name) SFX.big();
+      stage.dataset.wall = name;
+    },
+    // play a sound from talk.js: ['sfx', 'big' | 'pop' | 'click']
+    sfx: (ctx, name) => { if (!ctx.instant && window.SFX && SFX[name]) SFX[name](); },
 
     open(ctx, id, opts = {}) {
       const w = win(id);
@@ -746,6 +752,7 @@
     // window → full screen (menubar and taskbar slide away)
     maximize(ctx, id) {
       const w = win(id);
+      if (!ctx.instant && window.SFX && !w.classList.contains('is-full')) SFX.big();
       w.classList.add('is-full');
       w.style.zIndex = 1500;
       Object.assign(w.style, { left: '0px', top: '0px', width: W + 'px', height: H + 'px' });
