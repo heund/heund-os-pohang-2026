@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sound audition</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<style>
+  :root { --ink: #1c1a17; --paper: #fffaf0; --paper-2: #f3ead6; --yellow: #ffd84a; --green: #3dbb94; --blue: #74c7f2; --pink: #f8a9c8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--paper-2); color: var(--ink); font: 500 15px/1.5 "Pretendard Variable", system-ui, sans-serif; padding: 24px 16px 60px; }
+  main { max-width: 860px; margin: 0 auto; display: grid; gap: 18px; }
+  h1 { font-size: 26px; font-weight: 800; letter-spacing: -.03em; }
+  .lead { opacity: .75; }
+  section { border: 3px solid var(--ink); border-radius: 14px; background: var(--paper); padding: 16px; box-shadow: 6px 6px 0 rgba(28,26,23,.2); }
+  h2 { font-size: 19px; font-weight: 800; margin-bottom: 4px; }
+  .hint { font-size: 13px; opacity: .7; margin-bottom: 10px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 8px; }
+  .item { display: flex; align-items: center; gap: 8px; padding: 7px 9px; border: 2px solid var(--ink); border-radius: 10px; background: #fff; }
+  .item.is-picked { background: #fff6cc; }
+  .item b { font-family: ui-monospace, monospace; font-size: 13px; min-width: 30px; }
+  .item span { flex: 1; font-size: 14px; line-height: 1.3; }
+  .item small { display: block; font-size: 11px; opacity: .55; }
+  button { font: inherit; cursor: pointer; border: 2px solid var(--ink); border-radius: 8px; background: var(--yellow); padding: 4px 10px; font-weight: 800; }
+  button:active { transform: translate(2px, 2px); }
+  .play { width: 34px; height: 30px; padding: 0; }
+  input[type=checkbox], input[type=radio] { width: 18px; height: 18px; accent-color: var(--ink); }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; }
+  .bar button.big { padding: 8px 14px; font-size: 15px; background: var(--green); color: #fff; }
+  .typed { min-height: 34px; margin-top: 10px; padding: 6px 10px; border: 2px dashed rgba(28,26,23,.3); border-radius: 8px; font-size: 20px; font-weight: 800; }
+  .picked { font-family: ui-monospace, monospace; font-size: 15px; padding: 12px; border: 3px solid var(--ink); border-radius: 12px; background: #fff6cc; }
+  .warn { color: #b3261e; font-weight: 700; }
+</style>
+</head>
+<body>
+<main>
+  <h1>효과음 고르기</h1>
+  <p class="picked" style="background:#e8f5ee">지금 발표에 적용됨: 타자기 = C3 (Kenney click_003) · 클릭 = P3 (Mixkit Message pop alert) · 큰 전환 = N13 (Mixkit Page forward single chime). 남은 것: ③ 짧은 원샷</p>
+  <p class="lead">각 ▶로 들어 보고 마음에 드는 것을 체크하세요. 타자기는 여러 개를 고르면 글자마다 번갈아 나와 더 자연스럽습니다.
+    맨 아래 <b>선택</b> 줄을 알려 주시면 그 파일만 받아 발표에 넣습니다.</p>
+
+  <section id="keys">
+    <h2>① 타자기 키 (글자마다)</h2>
+    <p class="hint">Mixkit · Sound Effects Free License (무료, 출처 표기 불필요). 여러 개 선택 가능.</p>
+    <div class="grid" data-group="keys" data-multi="1"></div>
+    <div class="bar">
+      <button class="big" id="type-test" type="button">▶ 타이핑 미리듣기 (발표 속도)</button>
+      <button class="big" id="type-c3" type="button" style="background:#1c1a17">▶ 지금 적용된 소리 (C3 click_003)로 타이핑</button>
+      <label><input type="checkbox" id="with-bell"> 끝에 벨 소리</label>
+      <select id="bell"></select>
+    </div>
+    <p class="typed" id="typed"></p>
+  </section>
+
+  <section>
+    <h2>② 마우스 클릭 (화면 속 커서가 누를 때)</h2>
+    <p class="hint">Kenney Interface Sounds (CC0, 퍼블릭 도메인) · Mixkit Free License. 하나 선택.</p>
+    <div class="grid" data-group="click"></div>
+  </section>
+
+  <section>
+    <h2>③ 짧은 원샷 (알림창 · 팝업: MEMO, 찾을 수 없음, 질문, 영상 위 팝업)</h2>
+    <p class="hint">울림이 0.45초 이하인 것만, 짧은 순서로. 괄호 안은 실제로 울리는 길이. Kenney (CC0) · Mixkit Free License. 하나 선택.</p>
+    <div class="grid" data-group="pop"></div>
+  </section>
+
+  <p class="picked" id="picked">선택: (아직 없음)</p>
+  <p class="warn" id="err" hidden></p>
+</main>
+<script>
+  const MX = (id) => `https://assets.mixkit.co/active_storage/sfx/${id}/${id}-preview.mp3`;
+  const KN = (f) => `https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/${f}.wav`;
+  const SOUNDS = {
+    keys: [
+      ['T1', 'Typewriter soft click', 'Mixkit 1125', MX(1125)],
+      ['T2', 'Typewriter soft hit', 'Mixkit 1366', MX(1366)],
+      ['T3', 'Mechanical typewriter single hit', 'Mixkit 1382', MX(1382)],
+      ['T4', 'Typewriter single mechanical hit', 'Mixkit 1384', MX(1384)],
+      ['T5', 'Single hit on typewriter', 'Mixkit 1380', MX(1380)],
+      ['T6', 'Vintage typewriter hit', 'Mixkit 1369', MX(1369)],
+      ['T7', 'Typewriter hit', 'Mixkit 1362', MX(1362)],
+      ['T8', 'Mechanical typewriter hit', 'Mixkit 1365', MX(1365)],
+      ['T9', 'Hard typewriter hit', 'Mixkit 1364', MX(1364)],
+      ['T10', 'Typewriter hard hit', 'Mixkit 1367', MX(1367)],
+      ['T11', 'Hard typewriter click', 'Mixkit 1119', MX(1119)],
+    ],
+    bell: [
+      ['B1', 'Typewriter return bell', 'Mixkit 1368', MX(1368)],
+      ['B2', 'Typewriter return bell sound', 'Mixkit 1383', MX(1383)],
+      ['B3', 'Typewriter classic return', 'Mixkit 1381', MX(1381)],
+    ],
+    click: [
+      ['C1', 'click_001', 'Kenney CC0', KN('click_001')],
+      ['C2', 'click_002', 'Kenney CC0', KN('click_002')],
+      ['C3', 'click_003', 'Kenney CC0', KN('click_003')],
+      ['C4', 'click_004', 'Kenney CC0', KN('click_004')],
+      ['C5', 'click_005', 'Kenney CC0', KN('click_005')],
+      ['C6', 'Classic click', 'Mixkit 1117', MX(1117)],
+      ['C7', 'Clear mouse clicks', 'Mixkit 2997', MX(2997)],
+      ['C8', 'Mouse hard clicking', 'Mixkit 1111', MX(1111)],
+      ['C9', 'Mouse click close', 'Mixkit 1113', MX(1113)],
+      ['C10', 'Interface device click', 'Mixkit 2577', MX(2577)],
+      ['C11', 'Plastic bubble click', 'Mixkit 1124', MX(1124)],
+    ],
+    pop: [
+      ['S1', "Plastic bubble click (3ms)", "Mixkit 1124", "https://assets.mixkit.co/active_storage/sfx/1124/1124-preview.mp3"],
+      ['S2', "tick_001 (6ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/tick_001.wav"],
+      ['S3', "glitch_003 (11ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/glitch_003.wav"],
+      ['S4', "tick_002 (15ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/tick_002.wav"],
+      ['S5', "click1 (21ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/click1.wav"],
+      ['S6', "click3 (24ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/click3.wav"],
+      ['S7', "select_001 (25ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/select_001.wav"],
+      ['S8', "click5 (26ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/click5.wav"],
+      ['S9', "switch13 (27ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/switch13.wav"],
+      ['S10', "select_002 (28ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/select_002.wav"],
+      ['S11', "switch14 (29ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/switch14.wav"],
+      ['S12', "mouseclick1 (29ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/mouseclick1.wav"],
+      ['S13', "tick_004 (29ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/tick_004.wav"],
+      ['S14', "click4 (31ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/click4.wav"],
+      ['S15', "Cool interface click tone (33ms)", "Mixkit 2568", "https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"],
+      ['S16', "drop_001 (34ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/drop_001.wav"],
+      ['S17', "switch28 (35ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/switch28.wav"],
+      ['S18', "rollover2 (35ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/rollover2.wav"],
+      ['S19', "Typewriter soft click (36ms)", "Mixkit 1125", "https://assets.mixkit.co/active_storage/sfx/1125/1125-preview.mp3"],
+      ['S20', "switch26 (36ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/switch26.wav"],
+      ['S21', "select_007 (40ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/select_007.wav"],
+      ['S22', "select_008 (40ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/select_008.wav"],
+      ['S23', "glass_005 (43ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/glass_005.wav"],
+      ['S24', "bong_001 (47ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/bong_001.wav"],
+      ['S25', "switch12 (48ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/switch12.wav"],
+      ['S26', "Light button (50ms)", "Mixkit 2580", "https://assets.mixkit.co/active_storage/sfx/2580/2580-preview.mp3"],
+      ['S27', "click2 (51ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/click2.wav"],
+      ['S28', "pluck_001 (52ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/pluck_001.wav"],
+      ['S29', "glass_002 (55ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/glass_002.wav"],
+      ['S30', "drop_002 (56ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/drop_002.wav"],
+      ['S31', "toggle_004 (57ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/toggle_004.wav"],
+      ['S32', "rollover3 (67ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/rollover3.wav"],
+      ['S33', "rollover4 (68ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/rollover4.wav"],
+      ['S34', "Modern click box check (71ms)", "Mixkit 1120", "https://assets.mixkit.co/active_storage/sfx/1120/1120-preview.mp3"],
+      ['S35', "glass_003 (71ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/glass_003.wav"],
+      ['S36', "pluck_002 (72ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/pluck_002.wav"],
+      ['S37', "rollover5 (81ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/rollover5.wav"],
+      ['S38', "switch7 (82ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/switch7.wav"],
+      ['S39', "toggle_002 (88ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/toggle_002.wav"],
+      ['S40', "toggle_003 (91ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/toggle_003.wav"],
+      ['S41', "toggle_001 (91ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/toggle_001.wav"],
+      ['S42', "rollover6 (105ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/rollover6.wav"],
+      ['S43', "scratch_003 (123ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/scratch_003.wav"],
+      ['S44', "Gaming lock (133ms)", "Mixkit 2848", "https://assets.mixkit.co/active_storage/sfx/2848/2848-preview.mp3"],
+      ['S45', "rollover1 (137ms)", "Kenney UI Audio (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-ui-audio/master/addons/kenney_ui_audio/rollover1.wav"],
+      ['S46', "Light pop (139ms)", "Mixkit 3005", "https://assets.mixkit.co/active_storage/sfx/3005/3005-preview.mp3"],
+      ['S47', "open_001 (140ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/open_001.wav"],
+      ['S48', "minimize_007 (164ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/minimize_007.wav"],
+      ['S49', "maximize_007 (169ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/maximize_007.wav"],
+      ['S50', "ATM cash machine key press (177ms)", "Mixkit 2841", "https://assets.mixkit.co/active_storage/sfx/2841/2841-preview.mp3"],
+      ['S51', "Dry pop up notification alert (189ms)", "Mixkit 2356", "https://assets.mixkit.co/active_storage/sfx/2356/2356-preview.mp3"],
+      ['S52', "maximize_003 (191ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/maximize_003.wav"],
+      ['S53', "Select click (211ms)", "Mixkit 1109", "https://assets.mixkit.co/active_storage/sfx/1109/1109-preview.mp3"],
+      ['S54', "Typewriter soft hit (230ms)", "Mixkit 1366", "https://assets.mixkit.co/active_storage/sfx/1366/1366-preview.mp3"],
+      ['S55', "confirmation_001 (276ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/confirmation_001.wav"],
+      ['S56', "confirmation_003 (280ms)", "Kenney Interface (CC0)", "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/master/addons/kenney_interface_sounds/confirmation_003.wav"],
+      ['S57', "Bubble pop up alert (298ms)", "Mixkit 2357", "https://assets.mixkit.co/active_storage/sfx/2357/2357-preview.mp3"],
+      ['S58', "Positive interface beep (387ms)", "Mixkit 221", "https://assets.mixkit.co/active_storage/sfx/221/221-preview.mp3"],
+      ['S59', "Interface option select (389ms)", "Mixkit 2573", "https://assets.mixkit.co/active_storage/sfx/2573/2573-preview.mp3"],
+      ['S60', "Digital quick tone (411ms)", "Mixkit 2866", "https://assets.mixkit.co/active_storage/sfx/2866/2866-preview.mp3"],
+    ],
+  };
+
+  let ac;
+  const buffers = {};
+  const audioCtx = () => ac || (ac = new (window.AudioContext || window.webkitAudioContext)());
+  async function load(url) {
+    if (buffers[url]) return buffers[url];
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(res.status + ' ' + url);
+    const raw = await audioCtx().decodeAudioData(await res.arrayBuffer());
+    // skip leading silence so each sound starts on its hit, as it would in the presentation
+    const d = raw.getChannelData(0);
+    let peak = 0; for (const x of d) peak = Math.max(peak, Math.abs(x));
+    let start = 0; while (start < d.length && Math.abs(d[start]) < peak * 0.05) start++;
+    buffers[url] = { buf: raw, offset: Math.max(0, start / raw.sampleRate - 0.003) };
+    return buffers[url];
+  }
+  async function play(url, { rate = 1, gain = 1, max = 0 } = {}) {
+    try {
+      const { buf, offset } = await load(url);
+      const src = audioCtx().createBufferSource();
+      src.buffer = buf; src.playbackRate.value = rate;
+      const g = audioCtx().createGain(); g.gain.value = gain;
+      src.connect(g).connect(audioCtx().destination);
+      src.start(0, offset, max || undefined);
+    } catch (e) { const el = document.getElementById('err'); el.hidden = false; el.textContent = '재생 실패: ' + e.message; }
+  }
+
+  const picked = { keys: new Set(), click: null, pop: null };
+  const showPicked = () => {
+    const k = [...picked.keys].join(', ') || '—';
+    const bell = document.getElementById('with-bell').checked ? document.getElementById('bell').value : '없음';
+    document.getElementById('picked').textContent = `선택: 타자기 ${k} · 벨 ${bell} · 클릭 ${picked.click || '—'} · 팝 ${picked.pop || '—'}`;
+  };
+
+  document.querySelectorAll('.grid').forEach((grid) => {
+    const group = grid.dataset.group, multi = !!grid.dataset.multi;
+    SOUNDS[group].forEach(([id, name, src, url]) => {
+      const row = document.createElement('label');
+      row.className = 'item';
+      row.innerHTML = `<input type="${multi ? 'checkbox' : 'radio'}" name="${group}" value="${id}"><b>${id}</b><span>${name}<small>${src}</small></span><button class="play" type="button">▶</button>`;
+      row.querySelector('button').addEventListener('click', (e) => { e.preventDefault(); play(url); });
+      row.querySelector('input').addEventListener('change', (e) => {
+        if (multi) { e.target.checked ? picked.keys.add(id) : picked.keys.delete(id); row.classList.toggle('is-picked', e.target.checked); }
+        else { picked[group] = id; grid.querySelectorAll('.item').forEach((r) => r.classList.toggle('is-picked', r === row)); }
+        showPicked();
+      });
+      grid.appendChild(row);
+    });
+  });
+  const bellSel = document.getElementById('bell');
+  SOUNDS.bell.forEach(([id, name, src, url]) => { const o = document.createElement('option'); o.value = id; o.textContent = `${id} ${name}`; o.dataset.url = url; bellSel.appendChild(o); });
+  bellSel.addEventListener('change', () => { play(bellSel.selectedOptions[0].dataset.url); showPicked(); });
+  document.getElementById('with-bell').addEventListener('change', showPicked);
+
+  // exactly what the presentation now does: click_003, a slightly different pitch per key, softer lower spaces
+  document.getElementById('type-c3').addEventListener('click', async () => {
+    const url = KN('click_003');
+    await load(url);
+    const text = '포항에서 시작된 예술적 실험과 그 이후';
+    const out = document.getElementById('typed');
+    out.textContent = '';
+    for (const ch of text) {
+      out.textContent += ch;
+      if (ch === ' ') play(url, { rate: 0.8 + Math.random() * 0.06, gain: 0.5 * 0.85 });
+      else play(url, { rate: 0.92 + Math.random() * 0.16, gain: (0.8 + Math.random() * 0.2) * 0.85 });
+      await new Promise((r) => setTimeout(r, 55));
+    }
+  });
+
+  // the presentation types one character every 55 ms
+  document.getElementById('type-test').addEventListener('click', async () => {
+    const ids = [...picked.keys];
+    if (!ids.length) { alert('먼저 타자기 소리를 하나 이상 체크하세요.'); return; }
+    const urls = SOUNDS.keys.filter(([id]) => ids.includes(id)).map((s) => s[3]);
+    await Promise.all(urls.map(load));
+    const text = '포항에서 시작된 예술적 실험과 그 이후';
+    const out = document.getElementById('typed');
+    out.textContent = '';
+    let last = -1;
+    for (const ch of text) {
+      out.textContent += ch;
+      let k = Math.floor(Math.random() * urls.length);
+      if (urls.length > 1 && k === last) k = (k + 1) % urls.length;
+      last = k;
+      play(urls[k], { rate: 0.94 + Math.random() * 0.12, gain: ch === ' ' ? 0.55 : 0.9, max: 0.22 });
+      await new Promise((r) => setTimeout(r, 55));
+    }
+    if (document.getElementById('with-bell').checked) setTimeout(() => play(bellSel.selectedOptions[0].dataset.url, { gain: 0.7 }), 250);
+  });
+</script>
+</body>
+</html>
