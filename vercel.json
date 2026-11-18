@@ -1,9 +1,0 @@
-{
-  "cleanUrls": true,
-  "headers": [
-    {
-      "source": "/remote",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
-    }
-  ]
-}

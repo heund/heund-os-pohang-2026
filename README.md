@@ -2,8 +2,10 @@
 
 A static web presentation (no build step) plus a phone remote.
 
+Live: https://heund.github.io/heund-os-pohang-2026/ (GitHub Pages, from `main`)
+
 - `/` the presentation (1920 × 1080 stage, scaled to the window)
-- `/remote` the phone remote: slide n / total with a description, speaker notes, ◀ / video ❚❚▶ / ▶
+- `/remote.html` the phone remote: slide n / total with a description, speaker notes, ◀ / video ❚❚▶ / ▶
 
 ## Keys on the presentation
 
@@ -18,38 +20,34 @@ A static web presentation (no build step) plus a phone remote.
 | R | pair with the phone remote (passphrase) |
 | URL `#12` | open at step 12 |
 
-## 1. Supabase (once)
+## 1. Supabase
 
-1. Create a free project at supabase.com.
-2. Project Settings → API: copy the **Project URL** and the **publishable key** (or the anon key).
-3. Paste both into `remote-config.js`. They are meant to be public.
-4. Realtime → Settings: leave **Allow public access** on. The remote uses a public Broadcast channel
-   whose name is derived from your passphrase, so nothing needs a table, a policy or a login.
+Project **heund-os-remote** (Seoul), already set in `remote-config.js`: the Project URL and the
+publishable key, both meant to be public. Realtime → Settings keeps **Allow public access** on: the
+remote uses a public Broadcast channel whose name is derived from your passphrase, so nothing needs a
+table, a policy or a login.
 
-## 2. GitHub → Vercel
+## 2. GitHub Pages
+
+The repo `heund/heund-os-pohang-2026` is published by GitHub Pages from the root of `main`
+(`.nojekyll` serves the files as they are). To update the live site:
 
 ```
-git init
-git add .
-git commit -m "HEUND OS presentation"
-git branch -M main
-git remote add origin https://github.com/<you>/<repo>.git
-git push -u origin main
+git add -A
+git commit -m "update"
+git push
 ```
 
-Vercel → Add New → Project → import the repo → Framework Preset **Other**, no build command,
-output directory = root → Deploy. Every push to `main` redeploys.
-
-`.gitignore` keeps the original videos out (GitHub rejects files over 100 MB and Vercel Hobby caps
-static files at 100 MB); the site plays `assets/isea/ISEA_5min_web.mp4` and
-`assets/jeju/jeju_biennale_web.mp4`. The whole deployment is about 65 MB.
+Pages rebuilds in about a minute. `.gitignore` keeps the original videos out (GitHub rejects files
+over 100 MB); the site plays `assets/isea/ISEA_5min_web.mp4` and `assets/jeju/jeju_biennale_web.mp4`.
+The whole site is about 65 MB.
 
 ## 3. On the day
 
 1. Laptop: open the site in Chrome, press **R**, type a passphrase. It is remembered on that laptop.
 2. Click once on the presentation or press **F** (fullscreen). Browsers only allow video sound after
    the page has been clicked or a key pressed once; the phone shows a red notice until then.
-3. Phone: open `https://<your-site>/remote`, type the same passphrase → **연결**.
+3. Phone: open `https://heund.github.io/heund-os-pohang-2026/remote.html`, type the same passphrase → **연결**.
    The status reads **화면 연결됨** once the laptop answers.
 4. ◀ / ▶ move the talk; the middle button pauses / resumes the video on screen and shows its time.
 
