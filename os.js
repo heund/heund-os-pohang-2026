@@ -469,6 +469,7 @@
   }
 
   function burst() {
+    if (window.SFX) SFX.click();                       // sfx.js: mouse click sound
     const b = document.createElement('span');
     b.className = 'burst';
     b.style.left = `${cur.x + 2}px`;
@@ -620,6 +621,7 @@
           if (ctx.token !== token) return;
           c.classList.add('on');
           c.after(caret);
+          if (window.SFX) SFX.key(c.textContent);            // sfx.js: typewriter strike
           await sleep(ms);
         }
         await sleep(250);

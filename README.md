@@ -18,6 +18,7 @@ Live: https://heund.github.io/heund-os-pohang-2026/ (GitHub Pages, from `main`)
 | K | pause / resume the video on screen |
 | H | hide the progress bar |
 | R | pair with the phone remote (passphrase) |
+| M | mute / unmute the typewriter and click sounds |
 | URL `#12` | open at step 12 |
 
 ## 1. Supabase
