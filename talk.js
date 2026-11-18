@@ -197,7 +197,7 @@ window.TALK = [
 
   { label: 'CH 01', do: [
     ['close', 'question'],
-    ['wall', 'yellow'],
+    ['wall', 'yellow', { quiet: true }],   // 인트로 다음 첫 챕터: 전환음 없음
     ['chapterMap', { no: 'CHAPTER 01 · 2024', title: '포항융합예술실험실', sub: '새로운 사람들과 관점의 만남', chips: ['c24'] }],
   ]},
 
@@ -353,7 +353,6 @@ window.TALK = [
 
   { label: '감사합니다', do: [
     ['closeAll'],
-    ['sfx', 'big'],
     ['add', '#end', 'is-on'],
   ]},
 ];

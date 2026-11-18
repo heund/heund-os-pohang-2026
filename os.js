@@ -527,9 +527,9 @@
       return later(ctx, 400);
     },
     hide: (ctx, sel) => { $$(sel, stage).forEach((e) => e.classList.remove('is-shown')); },
-    // wallpaper = chapter colour; a new chapter gets the bigger transition sound
-    wall: (ctx, name) => {
-      if (!ctx.instant && window.SFX && stage.dataset.wall !== name) SFX.big();
+    // wallpaper = chapter colour; a new chapter gets the bigger transition sound ({ quiet: true } skips it)
+    wall: (ctx, name, opts = {}) => {
+      if (!ctx.instant && !opts.quiet && window.SFX && stage.dataset.wall !== name) SFX.big();
       stage.dataset.wall = name;
     },
     // play a sound from talk.js: ['sfx', 'big' | 'pop' | 'click']
