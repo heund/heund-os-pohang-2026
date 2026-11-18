@@ -1,0 +1,7 @@
+Sound effects used by sfx.js
+
+type.wav   Kenney · Interface Sounds · click_003.wav
+           CC0 1.0 (public domain) · https://kenney.nl/assets/interface-sounds · see LICENSE-kenney.txt
+click.wav  Mixkit · "Message pop alert" (#2354), trimmed to its hit
+           Mixkit Sound Effects Free License · https://mixkit.co/license/#sfxFree
+           (free for commercial and non-commercial projects; not to be redistributed on its own)

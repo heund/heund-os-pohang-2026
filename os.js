@@ -519,7 +519,13 @@
 
     add: (ctx, sel, cls) => { $$(sel, stage).forEach((e) => e.classList.add(cls)); },
     remove: (ctx, sel, cls) => { $$(sel, stage).forEach((e) => e.classList.remove(cls)); },
-    show: (ctx, sel) => { $$(sel, stage).forEach((e) => e.classList.add('is-shown')); return later(ctx, 400); },
+    show: (ctx, sel) => {
+      $$(sel, stage).forEach((e) => {
+        if (!ctx.instant && window.SFX && e.hasAttribute('data-pop') && !e.classList.contains('is-shown')) SFX.pop();
+        e.classList.add('is-shown');
+      });
+      return later(ctx, 400);
+    },
     hide: (ctx, sel) => { $$(sel, stage).forEach((e) => e.classList.remove('is-shown')); },
     wall: (ctx, name) => { stage.dataset.wall = name; },
 
@@ -531,6 +537,7 @@
         const oy = r.y + r.h / 2 - parseFloat(w.style.top);
         w.style.transformOrigin = `${ox}px ${oy}px`;
       }
+      if (!ctx.instant && window.SFX && w.hasAttribute('data-pop') && !w.classList.contains('is-open')) SFX.pop();
       w.classList.add('is-open');
       if (!openOrder.includes(id)) openOrder.push(id);
       focus(id);
