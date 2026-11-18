@@ -1,0 +1,947 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>포항에서 시작된 예술적 실험과 그 이후 · 김희은</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='26' rx='6' fill='%23fffaf0' stroke='%231c1a17' stroke-width='3'/%3E%3Cpath d='M16 8l2.2 5.8L24 16l-5.8 2.2L16 24l-2.2-5.8L8 16l5.8-2.2z' fill='%231c1a17'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;600;700;900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
+<link rel="stylesheet" href="os.css">
+</head>
+<body>
+
+<div id="viewport">
+<div id="stage" data-wall="mint">
+
+  <!-- ───────────── wallpaper ───────────── -->
+  <div id="wallpaper">
+    <svg class="blob" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <path d="M-40 760 C 260 600, 540 1000, 920 850 S 1520 420, 1960 560 L 1960 1120 L -40 1120 Z"/>
+      <path d="M1240 -40 C 1360 150, 1680 110, 1960 300 L 1960 -40 Z"/>
+    </svg>
+    <span class="spark" data-px="sparkle" data-size="5" style="left:1180px;top:118px;--d:0s"></span>
+    <span class="spark" data-px="sparkle" data-size="3" style="left:1262px;top:196px;--d:.6s"></span>
+    <span class="spark" data-px="sparkle" data-size="4" style="left:250px;top:930px;--d:1.1s"></span>
+    <span class="spark" data-px="sparkle" data-size="3" style="left:1640px;top:700px;--d:.3s"></span>
+  </div>
+
+  <!-- ───────────── camera (zoomable desktop) ───────────── -->
+  <div id="camera">
+  <div id="desk">
+
+    <!-- desktop icons -->
+    <div class="icon" id="icon-hello" style="left:28px;top:84px;--c:var(--green)">
+      <svg><use href="#i-txt"/></svg><span class="icon-label">hello.txt</span>
+    </div>
+    <div class="icon" id="icon-cv" style="left:28px;top:216px;--c:var(--coral)">
+      <svg><use href="#i-pdf"/></svg><span class="icon-label">CV_2026.pdf</span>
+    </div>
+    <div class="icon" id="icon-works" style="left:28px;top:348px;--c:var(--yellow)">
+      <svg><use href="#i-folder"/></svg><span class="icon-label">works/</span>
+    </div>
+    <div class="icon" id="icon-research" style="left:28px;top:480px;--c:var(--blue)">
+      <svg><use href="#i-floppy"/></svg><span class="icon-label">research/</span>
+    </div>
+    <div class="icon" id="icon-sound" style="left:28px;top:612px;--c:var(--lilac)">
+      <svg><use href="#i-wav"/></svg><span class="icon-label">sound.wav</span>
+    </div>
+    <div class="icon" id="icon-web" style="left:28px;top:744px;--c:var(--pink)">
+      <svg><use href="#i-web"/></svg><span class="icon-label">heund.net</span>
+    </div>
+    <div class="icon" id="icon-trash" style="left:28px;top:876px;--c:var(--paper-2)">
+      <svg><use href="#i-trash"/></svg><span class="icon-label">휴지통</span>
+    </div>
+
+    <div class="sticker" style="left:1560px;top:80px">
+      <span>포항융합<br>예술주간</span><b>2026</b>
+    </div>
+
+    <!-- ── hello.txt : title ── -->
+    <div class="win" data-win="hello" data-title="hello.txt" style="left:330px;top:150px;width:1220px;height:680px;--wc:var(--blue)">
+      <div class="win-body hello">
+        <p class="hello-cmd">&gt; cat hello.txt</p>
+        <h1 class="hello-type" id="hello-type" data-type><span class="hl" data-c="pink">포항</span>에서 시작된<br>예술적 실험과<br>그 이후</h1>
+        <p class="hello-sub"><span>김희은</span><span>시스템 아티스트 · 독립 연구자</span><span>2024~2026 포항융합예술 활동</span></p>
+      </div>
+    </div>
+
+    <!-- ── CV_2026.pdf ── -->
+    <div class="win" data-win="cv" data-title="CV_2026.pdf" style="left:230px;top:80px;width:1120px;height:920px;--wc:var(--yellow)">
+      <div class="win-tools">
+        <span class="tool-btn">◀</span><span class="tool-btn">▶</span>
+        <span class="tool-field">~/Desktop/CV_2026.pdf</span>
+        <span class="tool-field search" id="cv-search">
+          <svg class="mag" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+          <span class="q" id="cv-q" data-type data-ms="170">포항</span>
+          <span class="hits">3건</span>
+        </span>
+      </div>
+      <div class="win-body scroll pdf" id="cv-body">
+        <article class="paper">
+          <h1 class="cv-name">김희은 Hee-Eun Kim</h1>
+          <p class="cv-tag">시스템 아티스트  |  데이터 기반 인터랙션  |  사운드 아트</p>
+          <p class="cv-links">https://www.heund.net | @h.eund | hello@heund.net</p>
+          <hr>
+          <section class="cv-jobs">
+            <p><b>Australian National University</b>, Canberra, Australia, Research &amp; Publications, Research Data Collection and Metrics Analyst</p>
+            <p><b>Macquarie University</b>, Sydney Australia, Research Data Assessment &amp; Metrics Analyst</p>
+          </section>
+          <section id="cv-shows">
+            <h2>주요 전시 및 퍼포먼스</h2>
+            <ul class="cv-list">
+              <li><span class="y">2026</span><div><b>문전: 본풀이 공동체 프로젝트 (Munjeon)</b>, 갤러리 레미콘, 제 5 회 제주비엔날레, 제주<i>LED 디스플레이, 2.1 사운드, 가변크기, 원목구조, 짚, 웹 기반 앱</i></div></li>
+              <li><span class="y">2025</span><div><b>공진회로 (Resonance Loop)</b>, 카페꼼마 여의도점, 갤러리 아미디, 서울<i>LED 디스플레이, 2.1 사운드, 가변크기, Affective Translation Software</i></div></li>
+              <li><span class="y">2025</span><div><b>회전하는 무게 (Rotating Weights)</b>, 호계폐역, 소금나루 2014, 울산<i>LED 디스플레이, 2.1 사운드, 전자저울, LED 조명, 가변크기</i></div></li>
+              <li class="match" id="cv-pohang"><span class="y">2025</span><div><span class="hl" data-c="pink"><b>손끝의 알고리즘 (Embodied Algorithms)</b> 포스코 대한민국 명장 협업 전시, Space298, 포항문화재단, 포항</span><i>디지털 프린트 각 80 x 100cm, LED 디스플레이, 2.1 사운드, 아이패드(앱), 웹캠, 가변크기</i></div><span class="cv-sticker" style="--k:2;--c:var(--yellow)">《기술의 미학》 ’25</span></li>
+              <li><span class="y">2025</span><div><b>Void &amp;&amp; Form</b>, 비엔나 Das LOT, 오스트리아<i>LED 디스플레이, 2.1 사운드, 웹캠, 가변크기</i></div></li>
+              <li class="match"><span class="y">2024</span><div><span class="hl" data-c="pink"><b>메탈레이브 (Metal Rave)</b>, Dongbin 1969, 포항문화재단, 포항</span><i>컨베이어 벨트, 조이스틱, 4.1 사운드, LED 디스플레이, 가변크기</i></div><span class="cv-sticker" style="--k:0;--c:var(--green)">DNA Art Lab ’24</span></li>
+              <li class="match"><span class="y">2024</span><div><span class="hl" data-c="pink"><b>Deviated Vibrations</b>, 포항가속기연구소 협업작, Art &amp; Tech Forum</span></div><span class="cv-sticker" style="--k:1;--c:var(--lilac)">가속기 데이터 ’24</span></li>
+              <li><span class="y">2024</span><div><b>Sonification of Soil Contamination Data</b>, 솔라해피아워, 송파문화재단, 서울<i>미디어 월, 2.1 사운드, 가변크기</i></div></li>
+            </ul>
+          </section>
+        </article>
+
+        <article class="paper">
+          <ul class="cv-list">
+            <li><span class="y">2024</span><div>4x4 <b><em>!Mediengruppe Bitnik</em></b>, Seoul Edition, 아르코 미술관 &amp; 광주비엔날레<i>아르코 x 온큐레이팅 협력 기획전 《인투 더 리듬: 스코어로부터 접촉지대로》 전시 개막식 그룹 퍼포먼스</i></div></li>
+          </ul>
+          <section>
+            <h2>기타 사운드 아티스트 및 테크니션 경력</h2>
+            <ul class="cv-list tight">
+              <li><span class="y">2024</span><div>Music Production for MTV’s Teen Mom placement</div></li>
+              <li><span class="y">2023</span><div>Music Producer, MotoGirl, LA, USA</div></li>
+              <li><span class="y">2021</span><div>Ableton Live Loop Workshop</div></li>
+              <li><span class="y">2019</span><div>She is The Music Workshop</div></li>
+              <li><span class="y">2018</span><div>Glide Magazine Feature</div></li>
+              <li><span class="y">2018</span><div>AMRAP (Australian Music Radio Airplay Project) Featured Artist</div></li>
+              <li><span class="y">2017</span><div>Bondi Radio Interview, Sydney, Australia</div></li>
+              <li><span class="y">2016</span><div>Oxford Art Factory, Sydney Performance</div></li>
+              <li><span class="y">2016</span><div>Marrickville Hotel, Sydney Performance</div></li>
+              <li><span class="y">2016</span><div>Cellar Next Door, Sydney Performance</div></li>
+              <li><span class="y">2016</span><div>Indie Shuffle Feature</div></li>
+              <li><span class="y">2016</span><div>Triple J Unearthed Featured Artist</div></li>
+              <li><span class="y">2016</span><div>Assistant Audio Technician, Vivid Sydney, Australia</div></li>
+              <li><span class="y">2015</span><div>Audio Technician, Lane Cove Council, Sydney, Australia</div></li>
+              <li><span class="y">2014</span><div>Audio Technician, Beams Festival, Sydney, Australia</div></li>
+            </ul>
+          </section>
+          <section>
+            <h2>주요 연구 및 발표</h2>
+            <p class="cv-ref" id="cv-isea"><span class="hl" data-c="blue">“Designing Data Sonification with Epistemic Awareness: A Case Study of Audience Encounters” (2026). ISEA 2026</span></p>
+            <p class="cv-ref">BDSS Prototype Implementation: A Behavioural Approach to Sonifying Photosynthetic Systems (2025)</p>
+          </section>
+        </article>
+      </div>
+    </div>
+
+    <!-- ── sticky note ── -->
+    <div class="note" id="note-isea" style="left:1396px;top:300px;--nc:var(--blue);--rot:-2.5deg">
+      <p class="note-tag"><span>MEMO.txt</span><span>?</span></p>
+      <p class="note-big">검색엔 없지만,<br>이것도 포항</p>
+      <p class="note-sub">ISEA 2026 Full Paper<br>← 《흐르는 알고리즘》과<br>시민들의 반응에서 출발</p>
+    </div>
+
+    <!-- ── find result alert ── -->
+    <div class="win win-alert" data-win="alert" data-title="find_result.exe" data-z="900" style="left:400px;top:230px;width:1120px;--wc:var(--pink)">
+      <div class="win-body">
+        <div class="alert">
+          <span class="alert-icon" data-px="warning" data-size="9"></span>
+          <div>
+            <p class="alert-small">‘포항’ 검색 결과 3건. 하지만,</p>
+            <p class="alert-big">CV에서 찾을 수 없는 항목</p>
+            <ul class="alert-list"><li>포항에서 만난 사람들</li><li>나눈 대화</li><li>새롭게 접한 지식과 경험</li></ul>
+          </div>
+        </div>
+        <div class="alert-btns">
+          <span class="btn" id="alert-ok">확인</span>
+          <span class="btn btn-primary" id="alert-yes">관계망 보기 →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── relations.map ── -->
+    <div class="win" id="map" data-win="map" data-title="relations.map" style="left:110px;top:74px;width:1700px;height:930px;--wc:var(--lilac)">
+      <div class="win-body map-body" data-edges="n-postech>c24 n-river>c24 n-pal>c24 n-support>c24 n-citizens>c24 n-posco>c25 n-citizens>c25 n-support>c25 n-posco>c26 n-citizens>c26 c24|c25 c25|c27 c27|c26">
+        <svg class="map-svg"></svg>
+        <h3 class="map-head">CV 한 줄에 담기지 않는 이야기</h3>
+
+        <div class="chip" id="c24" data-ch="CHAPTER 01" style="top:140px;--k:0"><span class="chip-y">2024</span><div><b class="hl is-marked" data-c="pink">포항융합예술실험실</b><small>DNA Art Lab · 메탈레이브 · 가속기 협업</small></div></div>
+        <div class="chip" id="c25" data-ch="CHAPTER 02" style="top:320px;--k:1"><span class="chip-y">2025</span><div><b class="hl is-marked" data-c="pink">《기술의 미학》</b><small>CONT.ROLLING · 손끝의 알고리즘</small></div></div>
+        <div class="chip" id="c27" data-ch="CHAPTER 03" style="top:500px;--k:2"><span class="chip-y">2026</span><div><b class="hl is-marked" data-c="blue">제5회 제주비엔날레 《문전》</b><small>《조우: 서천꽃밭》 · QR 코드 인식 9만 건 이상</small></div></div>
+        <div class="chip" id="c26" data-ch="CHAPTER 03" style="top:680px;--k:3"><span class="chip-y">2026</span><div><b class="hl is-marked" data-c="blue">ISEA 2026</b><small>Full Paper · 11.13 온라인 발표</small></div></div>
+
+        <div class="node" id="n-postech" style="left:50px;top:130px;--k:0;--c:var(--blue)"><span class="node-ic"><svg><use href="#n-person"/></svg></span><div><b>POSTECH 교수님과 학생들</b><small>문제를 정의하고 접근하는 방식</small></div></div>
+        <div class="node" id="n-river" style="left:50px;top:380px;--k:1;--c:var(--green)"><span class="node-ic"><svg><use href="#n-wave"/></svg></span><div><b>형산강과 포항의 연구 현장</b><small>과학적 자료와 실제 장소의 연결</small></div></div>
+        <div class="node" id="n-pal" style="left:50px;top:630px;--k:2;--c:var(--lilac)"><span class="node-ic"><svg><use href="#n-ring"/></svg></span><div><b>포항가속기연구소 연구자</b><small>예술적 아이디어를 구체적인 실험으로</small></div></div>
+        <div class="node" id="n-posco" style="left:1244px;top:630px;--k:5;--c:var(--coral)"><span class="node-ic"><svg><use href="#n-roll"/></svg></span><div><b>포스코 권영국 명장님</b><small>산업 현장의 숙련된 지식을 시스템 설계로</small></div></div>
+        <div class="node" id="n-citizens" style="left:1244px;top:380px;--k:4;--c:var(--yellow)"><span class="node-ic"><svg><use href="#n-people"/></svg></span><div><b>전시를 경험한 시민들</b><small>해석의 확장, 새로운 연구 질문</small></div></div>
+        <div class="node" id="n-support" style="left:1244px;top:130px;--k:3;--c:var(--pink)"><span class="node-ic"><svg><use href="#n-house"/></svg></span><div><b>포항의 예술 기획과 지원 체계</b><small>실험과 협업을 지속할 수 있었던 기반</small></div></div>
+      </div>
+      <div class="map-status">
+        <span class="st-a">● CV에 기록된 것 <b>4</b></span>
+        <span class="st-b">○ CV에 담기지 않은 관계 6</span>
+        <span class="st-c">2024 → 2025 → 2026</span>
+      </div>
+    </div>
+
+    <!-- ── node details: 포항 지도 + 아이콘 + 요약 (말로 할 이야기는 아이콘으로만) ── -->
+
+    <div class="win detail" data-win="d-postech" data-title="postech.info" style="left:260px;top:120px;width:1400px;height:800px;--wc:var(--blue)">
+      <div class="win-body d-body">
+        <div class="pmap-wrap"><div class="pmap" data-pins="postech" data-zoom="3.2"></div></div>
+        <div class="d-info">
+          <span class="d-tag">2024 · 포항융합예술실험실</span>
+          <div class="d-head"><span class="node-ic" style="--c:var(--blue)"><svg><use href="#n-person"/></svg></span><h2>POSTECH<br>교수님과 학생들</h2></div>
+          <ul class="d-sum">
+            <li>박주홍 교수님의 Urban Design 수업 참관</li>
+            <li>문제를 정의하고 접근하는 방식에 대한 새로운 관점</li>
+          </ul>
+          <div class="d-icons">
+            <span class="vi" style="--k:0;--c:var(--lilac)"><svg><use href="#v-moon"/></svg></span>
+            <span class="vi" style="--k:1;--c:var(--blue)"><svg><use href="#v-dome"/></svg></span>
+            <span class="vi" style="--k:2;--c:var(--paper-2)"><svg><use href="#v-gravity"/></svg></span>
+            <span class="vi" style="--k:3;--c:var(--green)"><svg><use href="#v-wind"/></svg></span>
+            <span class="vi" style="--k:4;--c:var(--pink)"><svg><use href="#v-brick"/></svg></span>
+            <span class="vi" style="--k:5;--c:var(--yellow)"><svg><use href="#v-bulb"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="win detail" data-win="d-river" data-title="hyeongsan.info" style="left:260px;top:120px;width:1400px;height:800px;--wc:var(--green)">
+      <div class="win-body d-body">
+        <div class="pmap-wrap"><div class="pmap" data-pins="river" data-zoom="1.8" data-river="1"></div></div>
+        <div class="d-info">
+          <span class="d-tag">2024 · 포항융합예술실험실</span>
+          <div class="d-head"><span class="node-ic" style="--c:var(--green)"><svg><use href="#n-wave"/></svg></span><h2>형산강과<br>포항의 연구 현장</h2></div>
+          <ul class="d-sum">
+            <li>일주일간 형산강 일대 현장 리서치</li>
+            <li>과학적 자료와 실제 장소를 연결하는 경험</li>
+          </ul>
+          <p class="d-out">→ 3차원 사운드 매핑 실험</p>
+          <div class="d-icons">
+            <span class="vi" style="--k:0;--c:var(--paper-2)"><svg><use href="#v-doc"/></svg></span>
+            <span class="vi" style="--k:1;--c:var(--yellow)"><svg><use href="#v-steps"/></svg></span>
+            <span class="vi" style="--k:2;--c:var(--blue)"><svg><use href="#v-cube"/></svg></span>
+            <span class="vi" style="--k:3;--c:var(--pink)"><svg><use href="#v-speaker"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="win detail" data-win="d-pal" data-title="pal.info" style="left:260px;top:120px;width:1400px;height:800px;--wc:var(--lilac)">
+      <div class="win-body d-body">
+        <div class="pmap-wrap"><div class="pmap" data-pins="pal" data-zoom="3.6"></div></div>
+        <div class="d-info">
+          <span class="d-tag">2024 · 포항융합예술실험실</span>
+          <div class="d-head"><span class="node-ic" style="--c:var(--lilac)"><svg><use href="#n-ring"/></svg></span><h2>포항가속기연구소<br>연구자</h2></div>
+          <ul class="d-sum">
+            <li>김창범 박사님과 개발 중이던 데모 공유</li>
+            <li>가속기 주파수 데이터를 전달받아 실제 작업에 활용</li>
+          </ul>
+          <p class="d-out">→ Deviated Vibrations</p>
+          <div class="d-icons">
+            <span class="vi" style="--k:0;--c:var(--coral)"><svg><use href="#v-laser"/></svg></span>
+            <span class="vi" style="--k:1;--c:var(--blue)"><svg><use href="#v-crystal"/></svg></span>
+            <span class="vi" style="--k:2;--c:var(--paper-2)"><svg><use href="#v-laptop"/></svg></span>
+            <span class="vi" style="--k:3;--c:var(--yellow)"><svg><use href="#v-chat"/></svg></span>
+            <span class="vi" style="--k:4;--c:var(--green)"><svg><use href="#v-sine"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="win detail" data-win="d-aud24" data-title="audience_2024.info" style="left:260px;top:120px;width:1400px;height:800px;--wc:var(--yellow)">
+      <div class="win-body d-body">
+        <div class="pmap-wrap"><div class="pmap" data-pins="dongbin" data-zoom="4.6"></div></div>
+        <div class="d-info">
+          <span class="d-tag">2024 · 포항융합예술주간 《제6의 섬》</span>
+          <div class="d-head"><span class="node-ic" style="--c:var(--yellow)"><svg><use href="#n-people"/></svg></span><h2>전시에서<br>만난 관객들</h2></div>
+          <ul class="d-sum">
+            <li>관객들의 반응과 참여 방식 관찰</li>
+            <li>데이터, 소리, 관객의 행동이 서로 영향을 주고받는 시스템으로</li>
+          </ul>
+          <div class="d-icons">
+            <span class="vi" style="--k:0;--c:var(--coral)"><svg><use href="#v-joystick"/></svg></span>
+            <span class="vi" style="--k:1;--c:var(--paper-2)"><svg><use href="#v-eye"/></svg></span>
+            <span class="vi" style="--k:2;--c:var(--pink)"><svg><use href="#v-question"/></svg></span>
+            <span class="vi" style="--k:3;--c:var(--green)"><svg><use href="#v-loop"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="win detail" data-win="d-posco" data-title="master_kwon.info" style="left:260px;top:120px;width:1400px;height:800px;--wc:var(--coral)">
+      <div class="win-body d-body">
+        <div class="pmap-wrap"><div class="pmap" data-pins="posco" data-zoom="2.2"></div></div>
+        <div class="d-info">
+          <span class="d-tag">2025 · 《기술의 미학》</span>
+          <div class="d-head"><span class="node-ic" style="--c:var(--coral)"><svg><use href="#n-roll"/></svg></span><h2>포스코<br>권영국 명장님</h2></div>
+          <ul class="d-sum">
+            <li>40년 이상 축적된 열간압연 현장의 숙련된 지식</li>
+            <li>숙련된 판단과 조율의 원리를 자율 에이전트의 행동 규칙으로</li>
+          </ul>
+          <p class="d-out">→ 《흐르는 알고리즘》 Responsive Algorithms</p>
+          <div class="d-icons">
+            <span class="vi" style="--k:0;--c:var(--coral)"><svg><use href="#v-thermo"/></svg></span>
+            <span class="vi" style="--k:1;--c:var(--yellow)"><svg><use href="#v-press"/></svg></span>
+            <span class="vi" style="--k:2;--c:var(--paper-2)"><svg><use href="#v-gap"/></svg></span>
+            <span class="vi" style="--k:3;--c:var(--blue)"><svg><use href="#v-eye"/></svg></span>
+            <span class="vi" style="--k:4;--c:var(--green)"><svg><use href="#v-knob"/></svg></span>
+            <span class="vi" style="--k:5;--c:var(--lilac)"><svg><use href="#v-agents"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="win detail" data-win="d-cit25" data-title="citizens_2025.info" style="left:260px;top:120px;width:1400px;height:800px;--wc:var(--yellow)">
+      <div class="win-body d-body">
+        <div class="pmap-wrap"><div class="pmap" data-pins="space298" data-zoom="4.6"></div></div>
+        <div class="d-info">
+          <span class="d-tag">2025 · 《CONT.ROLLING》</span>
+          <div class="d-head"><span class="node-ic" style="--c:var(--yellow)"><svg><use href="#n-people"/></svg></span><h2>전시를 경험한<br>시민들</h2></div>
+          <ul class="d-sum">
+            <li>협업의 결과를 시민들과 함께 경험하는 전시</li>
+            <li>시민들의 다양한 해석이 새로운 연구 질문으로</li>
+          </ul>
+          <p class="d-out">→ ISEA 2026 Full Paper</p>
+          <div class="d-icons">
+            <span class="vi" data-n="1" style="--k:0;--c:var(--paper-2)"><svg><use href="#v-phone"/></svg></span>
+            <span class="vi" data-n="2" style="--k:1;--c:var(--blue)"><svg><use href="#v-ar"/></svg></span>
+            <span class="vi" data-n="3" style="--k:2;--c:var(--lilac)"><svg><use href="#v-agents"/></svg></span>
+            <span class="vi" style="--k:3;--c:var(--yellow)"><svg><use href="#v-note"/></svg></span>
+            <span class="vi" style="--k:4;--c:var(--pink)"><svg><use href="#v-question"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="win detail" data-win="d-support" data-title="support.info" style="left:260px;top:120px;width:1400px;height:800px;--wc:var(--pink)">
+      <div class="win-body d-body">
+        <div class="pmap-wrap"><div class="pmap" data-pins="pal postech river posco dongbin space298" data-net="1"></div></div>
+        <div class="d-info">
+          <span class="d-tag">2024~2026</span>
+          <div class="d-head"><span class="node-ic" style="--c:var(--pink)"><svg><use href="#n-house"/></svg></span><h2>포항의 예술 기획과<br>지원 체계</h2></div>
+          <ul class="d-sum">
+            <li>서로 다른 분야의 사람들과 지식이 만나는 자리</li>
+            <li>실험과 협업을 지속할 수 있었던 기반</li>
+          </ul>
+          <p class="d-tags"><span>포항융합예술실험실</span><span>포항융합예술주간</span><span>《기술의 미학》</span></p>
+          <div class="d-icons">
+            <span class="vi" style="--k:0;--c:var(--yellow)"><svg><use href="#v-link"/></svg></span>
+            <span class="vi" style="--k:1;--c:var(--blue)"><svg><use href="#v-chat"/></svg></span>
+            <span class="vi" style="--k:2;--c:var(--paper-2)"><svg><use href="#v-calendar"/></svg></span>
+            <span class="vi" style="--k:3;--c:var(--pink)"><svg><use href="#v-spark"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── question.txt ── -->
+    <div class="win" data-win="question" data-title="question.txt" style="left:300px;top:250px;width:1320px;height:560px;--wc:var(--yellow)">
+      <div class="win-body big-text">
+        <p class="hello-cmd">&gt; cat question.txt</p>
+        <p class="big-type" id="q-type" data-type data-ms="34">포항이라는 지역의 <span class="hl" data-c="pink">관계망</span> 안에서<br>어떠한 실험이 가능해졌고,<br>그 경험이 이후의 예술적 실천을<br>어떻게 변화시켰는가.</p>
+      </div>
+    </div>
+
+    <!-- ── works/ (filtered: 포항) ── -->
+    <div class="win" data-win="works" data-title="works/" style="left:220px;top:84px;width:1400px;height:900px;--wc:var(--green)">
+      <div class="win-tools">
+        <span class="tool-btn">◀</span><span class="tool-btn">▶</span>
+        <span class="tool-field">~/heund/works</span>
+        <span class="tool-field search is-on">
+          <svg class="mag" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+          <span class="q">포항</span><span class="hits">3 / 8</span>
+        </span>
+      </div>
+      <div class="win-body folders is-filtered">
+        <div class="folder" id="f-munjeon" style="--c:var(--yellow)"><svg><use href="#i-folder"/></svg><span class="f-name">문전 Munjeon</span><span class="f-meta">2026 · 제주</span></div>
+        <div class="folder" id="f-resonance" style="--c:var(--pink)"><svg><use href="#i-folder"/></svg><span class="f-name">공진회로</span><span class="f-meta">2025 · 서울</span></div>
+        <div class="folder" id="f-weights" style="--c:var(--blue)"><svg><use href="#i-folder"/></svg><span class="f-name">회전하는 무게</span><span class="f-meta">2025 · 울산</span></div>
+        <div class="folder pohang" id="f-embodied" style="--c:var(--coral)"><svg><use href="#i-folder"/></svg><span class="f-name">손끝의 알고리즘</span><span class="f-meta">2025 · 포항</span><span class="badge">POHANG</span></div>
+        <div class="folder" id="f-void" style="--c:var(--lilac)"><svg><use href="#i-folder"/></svg><span class="f-name">Void &amp;&amp; Form</span><span class="f-meta">2025 · Wien</span></div>
+        <div class="folder pohang" id="f-metal" style="--c:var(--green)"><svg><use href="#i-folder"/></svg><span class="f-name">메탈레이브</span><span class="f-meta">2024 · 포항</span><span class="badge">POHANG</span></div>
+        <div class="folder pohang" id="f-deviated" style="--c:var(--yellow)"><svg><use href="#i-folder"/></svg><span class="f-name">Deviated Vibrations</span><span class="f-meta">2024 · 포항</span><span class="badge">POHANG</span></div>
+        <div class="folder" id="f-soil" style="--c:var(--pink)"><svg><use href="#i-folder"/></svg><span class="f-name">Soil Data</span><span class="f-meta">2024 · 서울</span></div>
+      </div>
+    </div>
+
+    <!-- ── metal_rave.md ── -->
+    <div class="win" data-win="metal" data-title="metal_rave.md" style="left:860px;top:128px;width:1000px;height:850px;--wc:var(--coral)">
+      <div class="win-body">
+        <div class="media">
+          <span class="media-tag">▶ metal_rave_2024.mp4</span>
+          <span class="play"></span>
+          <span class="media-hint">사진 · 영상 자리</span>
+        </div>
+        <div class="proj">
+          <p class="proj-meta">2024 · 포항융합예술주간 《제6의 섬》 · 동빈문화창고1969</p>
+          <h2 class="proj-title">메탈레이브 <span>Metal Rave</span></h2>
+          <p class="proj-desc">형산강의 지리적 특성과 과학적 구조에서 착안한<br><span class="hl" data-c="yellow">3차원 사운드 매핑</span> 실험</p>
+          <p class="tags"><span>컨베이어 벨트</span><span>조이스틱</span><span>4.1 사운드</span><span>LED 디스플레이</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 3. 2026: 포항 → 세계 (지도에서 지구로 줌아웃) ── -->
+    <div class="win" data-win="globe" data-title="pohang → world" style="left:160px;top:76px;width:1600px;height:924px;--wc:var(--blue)">
+      <div class="win-body globe-body" id="globe">
+        <canvas class="globe-cv"></canvas>
+        <div class="globe-wide"></div>
+        <div class="globe-map"></div>
+        <div class="globe-tags"></div>
+        <p class="globe-hud"><span class="globe-coord"></span><span class="globe-span"></span></p>
+        <h3 class="globe-head"><span class="gh-no">CHAPTER 03 · 2026</span><br><span>포항에서 만들어진 것들이</span><br><span>국제적인 담론으로</span></h3>
+      </div>
+    </div>
+
+    <!-- ── ISEA2026 논문 PDF (천천히 스크롤) ── -->
+    <div class="win" data-win="paper" data-title="ISEA2026_Kim_468_Full_Paper.pdf" style="left:330px;top:76px;width:1260px;height:924px;--wc:var(--yellow)">
+      <div class="win-tools">
+        <span class="tool-btn">◀</span><span class="tool-btn">▶</span>
+        <span class="tool-field">~/ISEA_2026/ISEA2026_Kim_468_Full_Paper.pdf</span>
+        <span class="tool-field search" id="paper-search">
+          <svg class="mag" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+          <span class="q" id="paper-q" data-type data-ms="110">Pohang</span>
+          <span class="hits">6건</span>
+        </span>
+        <span class="tool-chip paper-zoom"><b class="z1">100%</b><b class="z2">56%</b><b class="z3">26%</b></span>
+      </div>
+      <div class="win-body scroll pdf paper-pdf">
+        <div class="pdf-pages">
+          <div class="pdf-pg" data-p="1"><img src="assets/isea/paper-1.png" alt="">
+            <span class="phl g-posco1 " data-c="pink" style="left:12.760%;top:40.660%;width:19.479%;height:1.409%;--k:0"></span>
+            <span class="phl g-pohang " data-c="pink" style="left:39.227%;top:40.660%;width:4.792%;height:1.409%;--k:0"></span>
+          </div>
+          <div class="pdf-pg" data-p="2"><img src="assets/isea/paper-2.png" alt="">
+            <span class="phl g-kwon " data-c="pink" style="left:86.974%;top:76.513%;width:4.796%;height:1.544%;--k:0"></span>
+            <span class="phl g-kwon " data-c="pink" style="left:52.028%;top:77.907%;width:39.753%;height:1.544%;--k:1"></span>
+            <span class="phl g-kwon " data-c="pink" style="left:52.028%;top:79.286%;width:39.303%;height:1.544%;--k:2"></span>
+            <span class="phl g-skill " data-c="yellow" style="left:78.840%;top:51.510%;width:12.975%;height:1.544%;--k:0"></span>
+            <span class="phl g-skill " data-c="yellow" style="left:52.028%;top:52.903%;width:14.179%;height:1.544%;--k:1"></span>
+            <span class="phl g-pohang " data-c="pink" style="left:59.312%;top:50.116%;width:5.281%;height:1.544%;--k:0"></span>
+            <span class="phl g-pohang " data-c="pink" style="left:62.522%;top:62.616%;width:5.281%;height:1.544%;--k:1"></span>
+            <span class="phl g-pohang " data-c="pink" style="left:70.480%;top:66.782%;width:5.299%;height:1.544%;--k:2"></span>
+          </div>
+          <div class="pdf-pg" data-p="3"><img src="assets/isea/paper-3.png" alt="">
+            <span class="phl g-pohang " data-c="pink" style="left:36.321%;top:24.596%;width:4.792%;height:1.409%;--k:0"></span>
+          </div>
+          <div class="pdf-pg" data-p="4"><img src="assets/isea/paper-4.png" alt="">
+            <span class="phl g-aud-head " data-c="blue" style="left:52.028%;top:78.801%;width:15.738%;height:1.695%;--k:0"></span>
+          </div>
+          <div class="pdf-pg" data-p="5"><img src="assets/isea/paper-5.png" alt="">
+            <span class="phl g-q q1" data-c="blue" style="left:9.294%;top:61.161%;width:39.067%;height:1.544%;--k:0"></span>
+            <span class="phl g-q q1" data-c="blue" style="left:8.627%;top:62.555%;width:6.401%;height:1.544%;--k:1"></span>
+            <span class="phl g-q q2" data-c="blue" style="left:31.023%;top:73.665%;width:17.373%;height:1.544%;--k:0"></span>
+            <span class="phl g-q q2" data-c="blue" style="left:8.627%;top:75.059%;width:38.663%;height:1.544%;--k:1"></span>
+            <span class="phl g-q q3" data-c="blue" style="left:68.874%;top:15.079%;width:22.919%;height:1.544%;--k:0"></span>
+            <span class="phl g-q q3" data-c="blue" style="left:52.028%;top:16.458%;width:22.434%;height:1.544%;--k:1"></span>
+            <span class="phl g-q q4" data-c="blue" style="left:83.212%;top:26.185%;width:8.596%;height:1.544%;--k:0"></span>
+            <span class="phl g-q q4" data-c="blue" style="left:52.028%;top:27.579%;width:21.645%;height:1.544%;--k:1"></span>
+            <span class="phl g-q q5" data-c="blue" style="left:63.855%;top:61.040%;width:27.921%;height:1.544%;--k:0"></span>
+            <span class="phl g-q q5" data-c="blue" style="left:52.028%;top:62.434%;width:39.741%;height:1.544%;--k:1"></span>
+            <span class="phl g-q q5" data-c="blue" style="left:52.028%;top:63.813%;width:15.632%;height:1.544%;--k:2"></span>
+          </div>
+          <div class="pdf-pg" data-p="6"><img src="assets/isea/paper-6.png" alt="">
+            <span class="phl g-q q6" data-c="blue" style="left:23.944%;top:6.743%;width:24.430%;height:1.544%;--k:0"></span>
+            <span class="phl g-q q6" data-c="blue" style="left:8.627%;top:8.122%;width:13.138%;height:1.544%;--k:1"></span>
+            <span class="phl g-q q7" data-c="blue" style="left:39.655%;top:8.122%;width:8.752%;height:1.544%;--k:0"></span>
+            <span class="phl g-q q7" data-c="blue" style="left:8.627%;top:9.518%;width:39.733%;height:1.544%;--k:1"></span>
+            <span class="phl g-q q7" data-c="blue" style="left:8.627%;top:10.912%;width:39.729%;height:1.544%;--k:2"></span>
+            <span class="phl g-q q7" data-c="blue" style="left:8.627%;top:12.291%;width:6.557%;height:1.544%;--k:3"></span>
+          </div>
+          <div class="pdf-pg" data-p="7"><img src="assets/isea/paper-7.png" alt="">
+          </div>
+          <div class="pdf-pg" data-p="8"><img src="assets/isea/paper-8.png" alt="">
+            <span class="phl g-ack-head " data-c="yellow" style="left:20.003%;top:54.386%;width:16.622%;height:1.829%;--k:0"></span>
+            <span class="phl g-ack " data-c="pink" style="left:29.011%;top:56.981%;width:16.938%;height:1.409%;--k:0"></span>
+            <span class="phl g-ack " data-c="pink" style="left:25.062%;top:58.375%;width:14.325%;height:1.409%;--k:0"></span>
+            <span class="phl g-ack " data-c="yellow" style="left:41.655%;top:59.754%;width:6.722%;height:1.409%;--k:0"></span>
+            <span class="phl g-ack " data-c="yellow" style="left:8.627%;top:61.148%;width:8.285%;height:1.409%;--k:1"></span>
+            <span class="phl g-ack " data-c="pink" style="left:12.994%;top:62.542%;width:6.104%;height:1.409%;--k:0"></span>
+            <span class="phl g-ack " data-c="pink" style="left:35.366%;top:62.542%;width:13.008%;height:1.409%;--k:0"></span>
+            <span class="phl g-ack " data-c="pink" style="left:8.627%;top:63.921%;width:17.842%;height:1.409%;--k:1"></span>
+            <span class="phl g-pohang " data-c="pink" style="left:29.011%;top:56.981%;width:4.791%;height:1.409%;--k:0"></span>
+            <span class="ack-area" style="left:7.843%;top:53.704%;width:41.318%;height:16.474%"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ISEA2026 소개 ── -->
+    <div class="win" data-win="isea" data-title="isea2026.info" style="left:220px;top:96px;width:1480px;height:880px;--wc:var(--lilac)">
+      <div class="win-body isea-body">
+        <div class="isea-hero">
+          <img class="isea-logo" src="assets/isea/isea2026-logo.png" alt="ELYAH Dubai · ISEA2026">
+          <p class="isea-tagline">ONE SYMPOSIUM ACROSS DUBAI &amp; ONLINE · 6 - 15 NOVEMBER 2026</p>
+          <span class="isea-int"><img src="assets/isea/isea-international.jpg" alt="ISEA International"></span>
+        </div>
+        <div class="isea-info">
+          <div class="isea-col">
+            <span class="d-tag">2026 · 국제전자예술심포지엄</span>
+            <ul class="d-sum">
+              <li>제31회 International Symposium on Electronic/Emerging Art</li>
+              <li>ELYAH: Constellating Place, Data and Identity</li>
+              <li>Dubai Culture × Zayed University</li>
+            </ul>
+            <p class="isea-chips"><span>140+ academic papers</span><span>Dubai &amp; Online</span></p>
+          </div>
+          <div class="isea-paper">
+            <span class="isea-badge">FULL PAPER 채택</span>
+            <p class="isea-title">Designing Data Sonification with Epistemic Awareness: A Case Study of Audience Encounters</p>
+            <p class="isea-meta">Hee-Eun Kim · 2026.11.13 온라인 발표</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ISEA 발표 영상: 제주 영상과 같은 플레이어 창. 썸네일로 열리고, 전체화면 버튼을 누르면
+         전체화면이 된 뒤 처음부터 재생 (아래 바: 재생 상태 · 진행 · 시간, K: 일시정지 / 재개) ── -->
+    <div class="win win-player" data-win="video" data-title="ISEA_5min.mp4" style="left:300px;top:92px;width:1320px;height:850px;--wc:var(--blue)">
+      <div class="win-body player-body">
+        <video id="isea-video" src="assets/isea/ISEA_5min_web.mp4" poster="assets/isea/thumbnail_ISEA.jpg" preload="metadata" playsinline></video>
+        <span class="vplay"></span>
+      </div>
+      <div class="player-bar">
+        <span class="pb-btn"><i class="pb-icon"></i></span>
+        <span class="pb-track"><i></i></span>
+        <span class="pb-time">0:00 / 5:20</span>
+      </div>
+    </div>
+
+    <!-- ── 제주 《문전》 폴더: 작가와의 대화 영상 + 작업 설명 ── -->
+    <div class="win" data-win="jfolder" data-title="2026_munjeon/" style="left:430px;top:170px;width:1060px;height:600px;--wc:var(--green)">
+      <div class="win-tools">
+        <span class="tool-btn">◀</span><span class="tool-btn">▶</span>
+        <span class="tool-field">~/heund/works/2026_munjeon</span>
+        <span class="tool-chip">2 items</span>
+      </div>
+      <div class="win-body jf-body">
+        <div class="jf-item" id="jf-video">
+          <span class="jf-thumb"><img src="assets/jeju/video_thumbnail.jpg" alt=""><i class="jf-play"></i><em>2:00</em></span>
+          <span class="f-name">작가와의_대화.mp4</span>
+          <span class="f-meta">제5회 제주비엔날레 · Artist Talk</span>
+        </div>
+        <div class="jf-item" id="jf-work">
+          <span class="jf-thumb jf-doc"><svg style="--c:var(--green)"><use href="#i-txt"/></svg><b>《문전: 본풀이<br>공동체 프로젝트》</b></span>
+          <span class="f-name">munjeon.info</span>
+          <span class="f-meta">작업 설명</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 작가와의 대화 영상 (창 안에서 재생, 전체화면 아님) ── -->
+    <div class="win win-player" data-win="jvideo" data-title="작가와의_대화.mp4" style="left:300px;top:92px;width:1320px;height:850px;--wc:var(--green)">
+      <div class="win-body player-body">
+        <video id="jeju-video" src="assets/jeju/jeju_biennale_web.mp4" poster="assets/jeju/video_thumbnail.jpg" preload="metadata" playsinline></video>
+        <span class="vplay"></span>
+      </div>
+      <div class="player-bar">
+        <span class="pb-btn"><i class="pb-icon"></i></span>
+        <span class="pb-track"><i></i></span>
+        <span class="pb-time">0:00 / 2:00</span>
+      </div>
+    </div>
+
+    <!-- ── 《조우: 서천꽃밭》: 2025 《기술의 미학》에서 이어진 작업 ── -->
+    <div class="win" data-win="jeju" data-title="munjeon.info" style="left:200px;top:96px;width:1520px;height:880px;--wc:var(--green)">
+      <div class="win-body lin-body">
+        <div class="lin-head">
+          <span class="d-tag">2026 · 제5회 제주비엔날레 《문전: 본풀이 공동체 프로젝트》</span>
+          <h2>《조우: 서천꽃밭》 <small>Encounter: Seocheon Flower Garden</small></h2>
+          <p class="lin-medium">포항에서 개발한 기술의 새로운 활용</p>
+        </div>
+        <div class="lin-flow">
+          <div class="lin-card lin-2025" style="--k:0">
+            <span class="lin-year">2025</span>
+            <b>《흐르는 알고리즘》</b>
+            <small>《기술의 미학》 CONT.ROLLING · Space298, 포항</small>
+            <div class="lin-icons"><span class="vi" style="--k:0;--c:var(--paper-2)"><svg><use href="#v-ar"/></svg></span><span class="vi" style="--k:1;--c:var(--coral)"><svg><use href="#v-press"/></svg></span><span class="vi" style="--k:2;--c:var(--lilac)"><svg><use href="#v-agents"/></svg></span></div>
+            <p class="lin-focus">개입과 제어의 인식</p>
+            <ul><li>AR 기반 데이터 탐색 방식</li><li>산업 공정의 데이터를 탐색하던 접근 방식</li></ul>
+          </div>
+          <div class="lin-arrow" style="--k:1"><svg viewBox="0 0 120 40"><path d="M4 20h100M88 6l16 14-16 14"/></svg><span>확장</span></div>
+          <div class="lin-card lin-2026" style="--k:2">
+            <span class="lin-year">2026</span>
+            <b>《조우: 서천꽃밭》</b>
+            <small>제5회 제주비엔날레 · 앱 작품</small>
+            <div class="lin-icons"><span class="vi" style="--k:3;--c:var(--paper-2)"><svg><use href="#v-phone"/></svg></span><span class="vi" style="--k:4;--c:var(--yellow)"><svg><use href="#v-spark"/></svg></span><span class="vi" style="--k:5;--c:var(--green)"><svg><use href="#v-loop"/></svg></span></div>
+            <p class="lin-focus">데이터 윤리인식</p>
+            <ul><li>지역의 신화와 설화를 경험하는 비추출적 참여형 시스템</li><li>제주의 열두본풀이와 지역 설화를 활용한 앱 작품</li><li>갤러리 레미콘 1층을 중심으로 14개 장소와 연계</li></ul>
+          </div>
+        </div>
+        <div class="d-stats lin-stats">
+          <span style="--k:0"><b>14</b>개 장소</span>
+          <span style="--k:1"><b>약 3</b>개월간</span>
+          <span style="--k:2"><b>9만</b>건 이상의 QR 코드 인식 이벤트</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── encounter.map: 14개 장소 ── -->
+    <div class="win" data-win="encmap" data-title="encounter.map · 14 places" style="left:110px;top:74px;width:1700px;height:930px;--wc:var(--green)">
+      <div class="win-body enc-body">
+        <div class="gmap enc-map" id="enc-map" data-gmap="enc" data-view="all"></div>
+        <div class="enc-list" id="enc-list"></div>
+      </div>
+    </div>
+
+    <!-- ── encounter.app: 휴대폰 위의 조우 ── -->
+    <div class="win" data-win="encapp" data-title="encounter.app" style="left:140px;top:74px;width:1640px;height:930px;--wc:var(--yellow)">
+      <div class="win-body app-body" id="enc-app">
+        <div class="phone"><div class="phone-screen"><video id="enc-video" muted playsinline loop preload="auto"></video></div><i class="phone-notch"></i></div>
+        <div class="app-info">
+          <p class="app-tags"><span class="app-node"></span><span class="app-lang"></span></p>
+          <p class="app-place"></p>
+          <h2 class="app-title"></h2>
+          <p class="app-action"></p>
+          <p class="app-how"></p>
+        </div>
+        <div class="app-side">
+          <div class="gmap app-map" id="app-map" data-gmap="enc" data-view="old"></div>
+          <ol class="app-steps" id="app-steps"></ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── system: 하나의 시스템 ── -->
+    <div class="win" data-win="system" data-title="encounter → gallery · one system" style="left:227px;top:94px;width:1466px;height:883px;--wc:var(--lilac)">
+      <div class="win-body sys-win"><div class="sys-body" id="sys">
+        <div class="sys-phone">
+          <div class="phone"><div class="phone-screen"><video id="sys-video" src="assets/jeju/encounter/nodes-montage.mp4" poster="assets/jeju/encounter/nodes-montage.jpg" muted playsinline loop preload="auto"></video></div><i class="phone-notch"></i></div>
+          <p class="sys-title">《조우: 서천꽃밭》</p>
+        </div>
+        <div class="sys-node">
+          <ol class="sys-nodes" id="sys-nodes"></ol>
+          <p class="sys-now"></p>
+        </div>
+        <svg class="sys-wires" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+          <path id="wire-a" class="wire" d="M474 510 L 646 510"/>
+          <path id="wire-b" class="wire wire-b" d="M954 510 C 1050 510, 1050 266, 1134 266"/>
+          <path id="wire-c" class="wire wire-c" d="M1720 462 L 1720 570"/>
+          <g class="pulses pulses-a"><circle r="7"><animateMotion dur="1.4s" repeatCount="indefinite"><mpath href="#wire-a"/></animateMotion></circle><circle r="7"><animateMotion dur="1.4s" begin="0.47s" repeatCount="indefinite"><mpath href="#wire-a"/></animateMotion></circle><circle r="7"><animateMotion dur="1.4s" begin="0.94s" repeatCount="indefinite"><mpath href="#wire-a"/></animateMotion></circle></g>
+          <g class="pulses pulses-b"><circle r="7"><animateMotion dur="1.6s" repeatCount="indefinite"><mpath href="#wire-b"/></animateMotion></circle><circle r="7"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite"><mpath href="#wire-b"/></animateMotion></circle></g>
+          <g class="pulses pulses-c"><circle r="7"><animateMotion dur="1.1s" repeatCount="indefinite"><mpath href="#wire-c"/></animateMotion></circle><circle r="7"><animateMotion dur="1.1s" begin="0.55s" repeatCount="indefinite"><mpath href="#wire-c"/></animateMotion></circle></g>
+        </svg>
+        <!-- 앱의 HQ 표시(초가, images/background/samsung/choga_center.svg)를 그대로 사용 -->
+        <div class="sys-hq">
+          <svg class="sys-choga" viewBox="404 1252 56 37" aria-hidden="true"><path d="M452.38 1272.93c-.79-.05-2.34-.69-3.32-.7-2.19-.02-4.95.35-7.36.37-8.94.06-17.96-.37-26.93-.4-1.34 0-2.98.69-4.02.73-5.99.26-3.36-4.3-1.33-7.46 9.43-14.65 33.92-14.48 43.47.14 1.43 2.18 4.33 7.64-.49 7.32Z" fill="#d7c299"/><path d="M452.38 1272.93c-1.02 3.99.18 8.81-.33 12.79-.06.49-.08.91-.51 1.24-.81.64-10.25.69-11.94.68-1.05 0-2.08-.36-3.31-.36.04-4.15.96-11.21-5.07-11.23s-5.74 6.86-5.07 11.23c-2.98.02-13.26 1.32-15.04-.88-.33-.41-.32-.53-.38-1.02-.46-3.8.39-8.54.02-12.44 1.04-.04 2.69-.74 4.02-.73 8.97.03 17.99.46 26.93.4 2.41-.02 5.18-.38 7.36-.37.98 0 2.53.65 3.32.7Z" fill="#a4927d"/><path d="M436.29 1287.28c-3.38-.01-6.77-.02-10.15 0-.67-4.36-.91-11.24 5.07-11.23s5.11 7.08 5.07 11.23Z" fill="#62584c"/></svg>
+          <span class="hq-role">HQ</span>
+          <b>갤러리 레미콘</b>
+          <small>도시의 조우가 이곳에서 목격됩니다</small>
+        </div>
+        <div class="sys-display sys-d1">
+          <div class="sys-screen"><video id="sys-island" src="assets/jeju/encounter/display-island.mp4" poster="assets/jeju/encounter/display-island.jpg" muted playsinline loop preload="auto"></video></div>
+          <p class="sys-title">《조우의 목격》</p>
+        </div>
+        <div class="sys-display sys-d2">
+          <div class="sys-screen"><video id="sys-weather" src="assets/jeju/encounter/display-weather.mp4" poster="assets/jeju/encounter/display-weather.jpg" muted playsinline loop preload="auto"></video></div>
+          <p class="sys-title">《바람, 질서》</p>
+        </div>
+        <p class="sys-foot"><span>포항에서 이루어진 기술적 실험과 협업의 경험이</span><br><span>새로운 지역의 문화적 맥락에서 다시 활용된 사례</span></p>
+      </div></div>
+    </div>
+
+    <!-- ── outro.txt ── -->
+    <div class="win" data-win="outro" data-title="outro.txt" style="left:250px;top:230px;width:1420px;height:560px;--wc:var(--pink)">
+      <div class="win-body big-text">
+        <p class="hello-cmd">&gt; cat outro.txt</p>
+        <p class="big-type" id="o-type" data-type data-ms="30">CV에는 개별적인 전시와 논문으로 기록되지만,<br>실제로는 <span class="hl" data-c="pink">포항이라는 관계망</span> 속에서<br>여러 사람의 지식과 경험이 연결되며<br>발전해 온 하나의 연구이자 예술적 실천.</p>
+      </div>
+    </div>
+
+  </div><!-- /desk -->
+  </div><!-- /camera -->
+
+  <!-- ───────────── menubar ───────────── -->
+  <header id="menubar">
+    <div class="mb-left">
+      <span data-px="sparkle" data-size="3"></span>
+      <b class="brand">HEUND OS</b>
+      <nav><span>file</span><span>edit</span><span>view</span><span>talk</span><span>help</span></nav>
+    </div>
+    <div class="mb-right">
+      <span>포항융합예술주간 2026 성과 공유회</span><i class="sep"></i>
+      <span>@h.eund</span><i class="sep"></i>
+      <span id="clock"></span>
+    </div>
+  </header>
+
+  <!-- ───────────── taskbar ───────────── -->
+  <footer id="taskbar">
+    <div class="start"><span data-px="sparkle" data-size="2"></span>start</div>
+    <div class="tabs" id="tabs"></div>
+    <div class="progress">
+      <span id="step-label"></span>
+      <span class="nav-btn" id="nav-prev" title="이전 (←)">◀</span>
+      <span id="step-count">00/00</span>
+      <span class="nav-btn" id="nav-next" title="다음 (→)">▶</span>
+      <span class="pbar" id="pbar"></span>
+    </div>
+  </footer>
+
+  <div id="cursor"></div>
+
+  <!-- ───────────── boot ───────────── -->
+  <div id="boot" class="screen">
+    <span data-px="sparkle" data-size="14"></span>
+    <h1 class="boot-title">HEUND OS</h1>
+    <p class="boot-sub">포항융합예술주간 2026 성과 공유회 · 김희은</p>
+    <div class="boot-bar"><div class="boot-fill"></div></div>
+    <p class="boot-msg"><span>loading hee-eun.sys …</span><span class="boot-ready">press → to start</span></p>
+  </div>
+
+  <!-- ───────────── end ───────────── -->
+  <div id="end" class="screen">
+    <span data-px="sparkle" data-size="14"></span>
+    <h1 class="end-title">감사합니다</h1>
+    <p class="boot-sub">앞으로 이어질 새로운 실험과 협업을 기대하며</p>
+    <p class="end-links"><span>김희은 Hee-Eun Kim</span><span>heund.net</span><span>@h.eund</span><span>hello@heund.net</span></p>
+  </div>
+
+</div><!-- /stage -->
+  <div id="rewind"><b>◀◀ <span>00</span></b></div>
+</div><!-- /viewport -->
+
+
+<!-- ───────────── icon sprite ───────────── -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="doc-base">
+      <path d="M24 6h38l20 20v64a4 4 0 0 1-4 4H24a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4z" fill="#fffaf0" stroke="#1c1a17" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M62 6v16a4 4 0 0 0 4 4h16" fill="#e7dcc4" stroke="#1c1a17" stroke-width="4" stroke-linejoin="round"/>
+    </g>
+  </defs>
+  <symbol id="i-pdf" viewBox="0 0 100 100">
+    <use href="#doc-base"/>
+    <path d="M32 34h24M32 44h40M32 54h40" stroke="#1c1a17" stroke-width="4" stroke-linecap="round"/>
+    <rect x="8" y="62" width="56" height="24" rx="5" fill="var(--c)" stroke="#1c1a17" stroke-width="4"/>
+    <text x="36" y="80" text-anchor="middle" font-family="Galmuri11, monospace" font-weight="700" font-size="17" fill="#1c1a17">PDF</text>
+  </symbol>
+  <symbol id="i-txt" viewBox="0 0 100 100">
+    <use href="#doc-base"/>
+    <path d="M32 34h24M32 44h40M32 54h40" stroke="#1c1a17" stroke-width="4" stroke-linecap="round"/>
+    <rect x="8" y="62" width="56" height="24" rx="5" fill="var(--c)" stroke="#1c1a17" stroke-width="4"/>
+    <text x="36" y="80" text-anchor="middle" font-family="Galmuri11, monospace" font-weight="700" font-size="17" fill="#1c1a17">TXT</text>
+  </symbol>
+  <symbol id="i-wav" viewBox="0 0 100 100">
+    <use href="#doc-base"/>
+    <path d="M32 44v-6M40 50v-18M48 46v-10M56 54v-26M64 48v-14M72 44v-6" stroke="#1c1a17" stroke-width="4" stroke-linecap="round"/>
+    <rect x="8" y="62" width="56" height="24" rx="5" fill="var(--c)" stroke="#1c1a17" stroke-width="4"/>
+    <text x="36" y="80" text-anchor="middle" font-family="Galmuri11, monospace" font-weight="700" font-size="17" fill="#1c1a17">WAV</text>
+  </symbol>
+  <symbol id="i-folder" viewBox="0 0 120 100">
+    <path d="M8 20a6 6 0 0 1 6-6h28l10 10h54a6 6 0 0 1 6 6v58a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6z" fill="var(--c)" stroke="#1c1a17" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M8 20a6 6 0 0 1 6-6h28l10 10h54a6 6 0 0 1 6 6v58a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6z" fill="#1c1a17" fill-opacity=".18"/>
+    <path d="M24 52l3-32h66l-2 32z" fill="#fffaf0" stroke="#1c1a17" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M34 30h40M33 39h28" stroke="#1c1a17" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M8 44a6 6 0 0 1 6-6h92a6 6 0 0 1 6 6v44a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6z" fill="var(--c)" stroke="#1c1a17" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M18 49h84" stroke="#fff" stroke-opacity=".6" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-floppy" viewBox="0 0 100 100">
+    <rect x="12" y="8" width="76" height="84" rx="6" fill="var(--c)" stroke="#1c1a17" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M30 8h40v24a3 3 0 0 1-3 3H33a3 3 0 0 1-3-3z" fill="#d8d1c3" stroke="#1c1a17" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="55" y="14" width="8" height="15" fill="#1c1a17"/>
+    <rect x="22" y="48" width="56" height="38" rx="3" fill="#fffaf0" stroke="#1c1a17" stroke-width="4"/>
+    <path d="M30 59h40M30 68h40M30 77h26" stroke="#f6735f" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-web" viewBox="0 0 100 100">
+    <rect x="6" y="14" width="88" height="74" rx="8" fill="#fffaf0" stroke="#1c1a17" stroke-width="4"/>
+    <path d="M6 32h88" stroke="#1c1a17" stroke-width="4"/>
+    <circle cx="17" cy="23" r="3.5" fill="#1c1a17"/><circle cx="28" cy="23" r="3.5" fill="#1c1a17"/>
+    <circle cx="50" cy="60" r="20" fill="var(--c)" stroke="#1c1a17" stroke-width="4"/>
+    <path d="M30 60h40M50 40c-9 7-9 33 0 40M50 40c9 7 9 33 0 40" fill="none" stroke="#1c1a17" stroke-width="3.5"/>
+  </symbol>
+  <symbol id="i-trash" viewBox="0 0 100 100">
+    <path d="M38 18v-7h24v7" fill="none" stroke="#1c1a17" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M22 30h56l-6 60a4 4 0 0 1-4 4H32a4 4 0 0 1-4-4z" fill="var(--c)" stroke="#1c1a17" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="14" y="18" width="72" height="12" rx="4" fill="#fffaf0" stroke="#1c1a17" stroke-width="4"/>
+    <path d="M40 44v38M50 44v38M60 44v38" stroke="#1c1a17" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- relation-map node icons (64 × 64) -->
+  <symbol id="n-person" viewBox="0 0 64 64">
+    <circle cx="32" cy="22" r="11" fill="#fffaf0" stroke="#1c1a17" stroke-width="4"/>
+    <path d="M11 57c1-12 9-19 21-19s20 7 21 19z" fill="#fffaf0" stroke="#1c1a17" stroke-width="4" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="n-wave" viewBox="0 0 64 64">
+    <path d="M7 20c6-6 10-6 16 0s10 6 16 0 10-6 16 0M7 33c6-6 10-6 16 0s10 6 16 0 10-6 16 0M7 46c6-6 10-6 16 0s10 6 16 0 10-6 16 0" fill="none" stroke="#1c1a17" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="n-ring" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="22" fill="none" stroke="#1c1a17" stroke-width="4"/>
+    <circle cx="32" cy="32" r="9" fill="#fffaf0" stroke="#1c1a17" stroke-width="4"/>
+    <circle cx="50" cy="19" r="6" fill="#1c1a17"/>
+  </symbol>
+  <symbol id="n-roll" viewBox="0 0 64 64">
+    <rect x="3" y="28" width="58" height="8" rx="2" fill="#ffd84a" stroke="#1c1a17" stroke-width="3"/>
+    <circle cx="32" cy="14" r="11" fill="#fffaf0" stroke="#1c1a17" stroke-width="4"/>
+    <circle cx="32" cy="50" r="11" fill="#fffaf0" stroke="#1c1a17" stroke-width="4"/>
+  </symbol>
+  <symbol id="n-people" viewBox="0 0 64 64">
+    <circle cx="15" cy="25" r="7" fill="#fffaf0" stroke="#1c1a17" stroke-width="3.5"/>
+    <circle cx="49" cy="25" r="7" fill="#fffaf0" stroke="#1c1a17" stroke-width="3.5"/>
+    <path d="M2 54c1-9 6-15 13-15s12 6 13 15zM36 54c1-9 6-15 13-15s12 6 13 15z" fill="#fffaf0" stroke="#1c1a17" stroke-width="3.5" stroke-linejoin="round"/>
+    <circle cx="32" cy="20" r="9" fill="#fffaf0" stroke="#1c1a17" stroke-width="4"/>
+    <path d="M16 58c1-12 7-18 16-18s15 6 16 18z" fill="#fffaf0" stroke="#1c1a17" stroke-width="4" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="n-house" viewBox="0 0 64 64">
+    <path d="M44 6v12" stroke="#1c1a17" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M44 6h12l-3 4 3 4H44z" fill="#f6735f" stroke="#1c1a17" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M7 32L32 12l25 20v24H7z" fill="#fffaf0" stroke="#1c1a17" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="26" y="40" width="12" height="16" fill="#1c1a17"/>
+  </symbol>
+
+  <!-- visual icons (64 × 64). stroke / fill none inherited from .vi svg -->
+  <symbol id="v-moon" viewBox="0 0 64 64">
+    <path d="M38 8a24 24 0 1 0 18 38A19 19 0 0 1 38 8z" fill="#fffaf0"/>
+    <circle cx="50" cy="14" r="2.5" fill="#1c1a17" stroke="none"/><circle cx="56" cy="26" r="2" fill="#1c1a17" stroke="none"/>
+  </symbol>
+  <symbol id="v-dome" viewBox="0 0 64 64">
+    <path d="M32 30V16l7-5"/>
+    <path d="M10 52a22 22 0 0 1 44 0z" fill="#fffaf0"/>
+    <circle cx="32" cy="42" r="5" fill="#74c7f2"/>
+    <path d="M4 52h56"/>
+  </symbol>
+  <symbol id="v-gravity" viewBox="0 0 64 64">
+    <circle cx="32" cy="12" r="7" fill="#fffaf0"/>
+    <path d="M32 23v22M22 36l10 10 10-10M10 56h44"/>
+  </symbol>
+  <symbol id="v-wind" viewBox="0 0 64 64">
+    <path d="M6 22h30a7 7 0 1 0-7-7M6 34h44a7 7 0 1 1-7 7M6 46h22"/>
+  </symbol>
+  <symbol id="v-brick" viewBox="0 0 64 64">
+    <rect x="6" y="14" width="52" height="38" rx="3" fill="#f6735f"/>
+    <path d="M6 27h52M6 40h52M24 14v13M42 14v13M15 27v13M33 27v13M51 27v13M24 40v12M42 40v12" stroke-width="3"/>
+  </symbol>
+  <symbol id="v-bulb" viewBox="0 0 64 64">
+    <path d="M32 6a17 17 0 0 0-10 31c2 2 3 4 3 7h14c0-3 1-5 3-7A17 17 0 0 0 32 6z" fill="#ffd84a"/>
+    <path d="M25 51h14M28 58h8"/>
+  </symbol>
+  <symbol id="v-doc" viewBox="0 0 64 64">
+    <path d="M14 6h26l10 10v42H14z" fill="#fffaf0"/>
+    <path d="M40 6v10h10M21 27h22M21 36h22M21 45h14" stroke-width="3.5"/>
+  </symbol>
+  <symbol id="v-steps" viewBox="0 0 64 64">
+    <ellipse cx="22" cy="44" rx="8" ry="12" fill="#fffaf0"/>
+    <ellipse cx="42" cy="22" rx="8" ry="12" fill="#fffaf0"/>
+    <circle cx="17" cy="27" r="2.6" fill="#1c1a17" stroke="none"/><circle cx="24" cy="26" r="2.6" fill="#1c1a17" stroke="none"/>
+    <circle cx="37" cy="5" r="2.6" fill="#1c1a17" stroke="none"/><circle cx="44" cy="4" r="2.6" fill="#1c1a17" stroke="none"/>
+  </symbol>
+  <symbol id="v-cube" viewBox="0 0 64 64">
+    <path d="M32 6l23 12v28L32 58 9 46V18z" fill="#fffaf0"/>
+    <path d="M9 18l23 12 23-12M32 30v28"/>
+  </symbol>
+  <symbol id="v-speaker" viewBox="0 0 64 64">
+    <path d="M6 24h10l15-12v40L16 40H6z" fill="#fffaf0"/>
+    <path d="M40 25a9 9 0 0 1 0 14M47 18a19 19 0 0 1 0 28"/>
+  </symbol>
+  <symbol id="v-laser" viewBox="0 0 64 64">
+    <rect x="3" y="24" width="20" height="16" rx="3" fill="#fffaf0"/>
+    <path d="M23 32h22" stroke="#fffaf0" stroke-width="9"/>
+    <path d="M23 32h22"/>
+    <path d="M52 22v20M42 32h20M45 25l14 14M59 25 45 39" stroke-width="3"/>
+  </symbol>
+  <symbol id="v-crystal" viewBox="0 0 64 64">
+    <path d="M32 8l22 12v24L32 56 10 44V20z M32 8v48M10 20l44 24M54 20 10 44" stroke-width="3"/>
+    <g fill="#fffaf0" stroke-width="3"><circle cx="32" cy="8" r="5"/><circle cx="54" cy="20" r="5"/><circle cx="54" cy="44" r="5"/><circle cx="32" cy="56" r="5"/><circle cx="10" cy="44" r="5"/><circle cx="10" cy="20" r="5"/><circle cx="32" cy="32" r="6"/></g>
+  </symbol>
+  <symbol id="v-laptop" viewBox="0 0 64 64">
+    <rect x="10" y="12" width="44" height="30" rx="3" fill="#fffaf0"/>
+    <path d="M3 48h58l-4 7H7z" fill="#fffaf0"/>
+    <path d="M28 21l10 6-10 6z" fill="#1c1a17" stroke="none"/>
+  </symbol>
+  <symbol id="v-chat" viewBox="0 0 64 64">
+    <path d="M4 8h34v22H18l-8 7v-7H4z" fill="#fffaf0"/>
+    <path d="M26 34h34v18h-4v7l-8-7H26z" fill="#fffaf0"/>
+  </symbol>
+  <symbol id="v-sine" viewBox="0 0 64 64">
+    <path d="M4 32h56" stroke-width="2.5" stroke-dasharray="3 5"/>
+    <path d="M4 32c6-22 12-22 18 0s12 22 18 0 12-22 20 0"/>
+  </symbol>
+  <symbol id="v-joystick" viewBox="0 0 64 64">
+    <path d="M32 44V22"/>
+    <rect x="8" y="44" width="48" height="12" rx="4" fill="#fffaf0"/>
+    <circle cx="32" cy="15" r="10" fill="#fffaf0"/>
+  </symbol>
+  <symbol id="v-eye" viewBox="0 0 64 64">
+    <path d="M3 32c8-14 18-21 29-21s21 7 29 21c-8 14-18 21-29 21S11 46 3 32z" fill="#fffaf0"/>
+    <circle cx="32" cy="32" r="10" fill="#1c1a17" stroke="none"/><circle cx="36" cy="28" r="3" fill="#fff" stroke="none"/>
+  </symbol>
+  <symbol id="v-question" viewBox="0 0 64 64">
+    <path d="M6 8h52v36H28l-12 11V44H6z" fill="#fffaf0"/>
+    <text x="32" y="37" text-anchor="middle" font-family="Galmuri11, monospace" font-weight="700" font-size="28" fill="#1c1a17" stroke="none">?</text>
+  </symbol>
+  <symbol id="v-loop" viewBox="0 0 64 64">
+    <path d="M50 22a21 21 0 0 0-37 3M14 42a21 21 0 0 0 37-3"/>
+    <path d="M9 13v13h13M55 51V38H42"/>
+  </symbol>
+  <symbol id="v-thermo" viewBox="0 0 64 64">
+    <path d="M25 10a7 7 0 0 1 14 0v28a13 13 0 1 1-14 0z" fill="#fffaf0"/>
+    <path d="M32 46V20" stroke="#f6735f" stroke-width="6"/>
+    <circle cx="32" cy="47" r="6" fill="#f6735f" stroke="none"/>
+  </symbol>
+  <symbol id="v-press" viewBox="0 0 64 64">
+    <path d="M20 4v18M44 4v18M13 16l7 7 7-7M37 16l7 7 7-7"/>
+    <rect x="5" y="30" width="54" height="10" rx="2" fill="#f6735f"/>
+    <rect x="5" y="46" width="54" height="10" rx="2" fill="#fffaf0"/>
+  </symbol>
+  <symbol id="v-gap" viewBox="0 0 64 64">
+    <rect x="5" y="6" width="54" height="13" rx="4" fill="#fffaf0"/>
+    <rect x="5" y="45" width="54" height="13" rx="4" fill="#fffaf0"/>
+    <path d="M32 25v14M26 29l6-6 6 6M26 35l6 6 6-6"/>
+  </symbol>
+  <symbol id="v-knob" viewBox="0 0 64 64">
+    <circle cx="32" cy="36" r="17" fill="#fffaf0"/>
+    <path d="M32 36l9-11"/>
+    <path d="M7 36H3M32 11V5M57 36h4M14 18l-4-4M50 18l4-4" stroke-width="3.5"/>
+  </symbol>
+  <symbol id="v-agents" viewBox="0 0 64 64">
+    <path d="M18 40l20-14M22 46h20" stroke-width="3" stroke-dasharray="2 6"/>
+    <circle cx="14" cy="46" r="8" fill="#ffd84a"/>
+    <circle cx="44" cy="20" r="8" fill="#fffaf0"/>
+    <circle cx="50" cy="47" r="8" fill="#f8a9c8"/>
+  </symbol>
+  <symbol id="v-phone" viewBox="0 0 64 64">
+    <rect x="17" y="4" width="30" height="56" rx="6" fill="#fffaf0"/>
+    <path d="M24 20h16M24 31h16M24 42h16" stroke-width="3"/>
+    <g fill="#1c1a17" stroke="none"><circle cx="29" cy="20" r="3.5"/><circle cx="36" cy="31" r="3.5"/><circle cx="27" cy="42" r="3.5"/></g>
+  </symbol>
+  <symbol id="v-ar" viewBox="0 0 64 64">
+    <rect x="3" y="10" width="58" height="44" rx="6" fill="#fffaf0"/>
+    <path d="M32 19l11 6v13l-11 6-11-6V25z" fill="#74c7f2" stroke-width="3"/>
+    <path d="M21 25l11 6 11-6M32 31v13" stroke-width="3"/>
+  </symbol>
+  <symbol id="v-note" viewBox="0 0 64 64">
+    <path d="M9 6h46v38L41 58H9z" fill="#fffaf0"/>
+    <path d="M41 58V44h14M17 19h30M17 29h30M17 39h16" stroke-width="3.5"/>
+  </symbol>
+  <symbol id="v-link" viewBox="0 0 64 64">
+    <path d="M25 39l14-14"/>
+    <path d="M21 31l-7 7a9 9 0 0 0 12 12l7-7M43 33l7-7a9 9 0 0 0-12-12l-7 7"/>
+  </symbol>
+  <symbol id="v-calendar" viewBox="0 0 64 64">
+    <rect x="7" y="12" width="50" height="45" rx="5" fill="#fffaf0"/>
+    <path d="M7 25h50M20 5v13M44 5v13"/>
+    <g fill="#1c1a17" stroke="none"><rect x="15" y="33" width="8" height="7" rx="1"/><rect x="28" y="33" width="8" height="7" rx="1"/><rect x="41" y="33" width="8" height="7" rx="1"/><rect x="15" y="45" width="8" height="7" rx="1"/></g>
+  </symbol>
+  <symbol id="v-spark" viewBox="0 0 64 64">
+    <path d="M32 4l7 21 21 7-21 7-7 21-7-21-21-7 21-7z" fill="#ffd84a"/>
+  </symbol>
+</svg>
+
+<script src="map.js"></script>
+<script src="wide.js"></script>
+<script src="encmap.js"></script>
+<script src="globe.js"></script>
+<script src="talk.js"></script>
+<script src="os.js"></script>
+<script src="remote-config.js"></script>
+<script src="remote-link.js"></script>
+<script src="remote-display.js"></script>
+</body>
+</html>

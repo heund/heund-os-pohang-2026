@@ -1,0 +1,21 @@
+# ── local only ──
+.claude/
+REF/
+jeju.js
+CV4-korean-2026-3.pdf
+ISEA2026_Kim_468_Full_Paper.pdf
+
+# ── original videos: the site plays the *_web.mp4 versions
+#    (GitHub rejects files over 100 MB; Vercel Hobby caps static files at 100 MB) ──
+assets/isea/ISEA_5min.mp4
+assets/jeju/jeju_biennale.mp4
+assets/jeju/jeju_biennale_shorter.mp4
+
+# ── single-encounter clips no longer in the talk (the popup plays nodes-montage.mp4) ──
+assets/jeju/encounter/node-*.mp4
+assets/jeju/encounter/node-*.jpg
+
+# ── system files ──
+.DS_Store
+Thumbs.db
+desktop.ini
