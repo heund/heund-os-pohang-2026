@@ -104,16 +104,30 @@ The site plays web copies under 100 MB: `assets/isea/ISEA_5min_web.mp4` (5:20) a
 (`ISEA_5min.mp4`, `jeju_biennale.mp4`, `jeju_biennale_shorter.mp4`) are git-ignored because GitHub
 rejects files over 100 MB.
 
+- When the ISEA video plays to the end, its window un-maximises by itself (`unmaximize()` in
+  `os.js`, on the `ended` event); → then goes on to CH 04 as usual.
+- **iPad / Safari:** encode every video as H.264 `yuv420p` at level 4.x or lower, e.g.
+  `-c:v libx264 -profile:v high -level:v 4.0 -pix_fmt yuv420p -r 30 -movflags +faststart`.
+  `nodes-montage.mp4` was first encoded at level 6.2. Chrome played it, but the iPad froze on its
+  first frame (node 01). It was re-encoded on 2026-11-19 with the same 1,200 frames, so the node
+  labels stay in sync.
+- The local `python -m http.server` doesn't support byte ranges, so setting `currentTime` to jump
+  inside a video doesn't work locally (it does on GitHub Pages). To test late moments locally, raise
+  `playbackRate` (up to 16) instead.
+
 ### Sound (`sfx.js`, files in `assets/sfx/`, licences in `CREDITS.txt`)
 
 | Sound | File | When |
 |---|---|---|
-| typewriter | `type.wav` · Kenney click_003 (CC0), slight random pitch per key | every typed character |
+| typewriter | `type.wav` · Kenney click_003 (CC0), slight random pitch per key | every 2nd typed character, starting with the first (`KEY_EVERY` in `sfx.js`; the user asked for half as many) |
 | click | `click.wav` · Mixkit #2354 "Message pop alert", trimmed | the on-screen cursor's clicks |
-| big | `big.wav` · Mixkit #1107 "Page forward single chime", trimmed to 0.7 s | CH 02, CH 03, CH 04 and the ISEA full screen. CH 01 (`wall … {quiet: true}`) and 감사합니다 are silent on purpose |
+| big | `big.wav` · Mixkit #1107 "Page forward single chime", trimmed to 0.7 s | CH 01, CH 02, CH 03, CH 04 and the ISEA full screen. 감사합니다 is silent on purpose (`wall … {quiet: true}` silences a chapter if ever needed) |
 | pop | **not chosen yet** (`FILES.pop = ''`) | elements with `data-pop`: MEMO note (4), alert (5), question (8), Jeju popup (20) |
 
-**M** mutes. Browsers only allow audio after one click or key press on the page.
+**M** mutes. Browsers only allow audio after one click or key press on the page. On a touchscreen
+(iPad) audio unlocks when the finger lifts, so `sfx.js` wakes on `pointerup` / `touchend` / `click`
+as well as `pointerdown` / `keydown`, and plays a silent one-sample sound for Safari. Without that,
+the first tap's sounds were lost on the iPad.
 
 ### Keys
 

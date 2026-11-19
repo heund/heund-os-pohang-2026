@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    HEUND OS sound — recorded samples played with Web Audio
-     SFX.key(ch)  typewriter, once per typed character        ← os.js `type`
+     SFX.key(ch, i)  typewriter, every 2nd typed character    ← os.js `type`
      SFX.click()  the on-screen cursor's click / press        ← os.js `burst`
      SFX.pop()    things that pop up like speech bubbles      ← os.js `open` / `show` on [data-pop]
      SFX.big()    bigger transitions: chapter changes, full screen, the end  ← os.js `wall` / `maximize`, talk.js ['sfx', 'big']
@@ -45,12 +45,29 @@
     master.connect(ac.destination);
     Object.entries(raw).forEach(([name, p]) => p.then((ab) => ab && ac.decodeAudioData(ab.slice(0))).then((b) => { if (b) buf[name] = b; }).catch(() => {}));
   }
-  const wake = () => { init(); if (ac && ac.state !== 'running') ac.resume().catch(() => {}); };
-  ['pointerdown', 'keydown', 'touchstart'].forEach((t) => addEventListener(t, wake, { capture: true, passive: true }));
+  // Audio may only start inside a user gesture. With a finger (iPad, phone) that is the moment the
+  // finger lifts (pointerup / touchend / click), not when it touches down, so listen to all of them;
+  // otherwise the first tap only half-starts audio and the first sounds are lost.
+  // The silent one-sample sound unlocks Safari, which wants something played inside the gesture.
+  const wake = () => {
+    init();
+    if (!ac || ac.state === 'running') return;
+    ac.resume().catch(() => {});
+    try {
+      const s = ac.createBufferSource();
+      s.buffer = ac.createBuffer(1, 1, ac.sampleRate);
+      s.connect(ac.destination);
+      s.start();
+    } catch (e) { /* not allowed yet */ }
+  };
+  ['pointerdown', 'pointerup', 'mousedown', 'touchstart', 'touchend', 'click', 'keydown']
+    .forEach((t) => addEventListener(t, wake, { capture: true, passive: true }));
 
   const rnd = (a, b) => a + Math.random() * (b - a);
   function play(name, { rate = 1, gain = 1 } = {}) {
-    if (muted || !ac || ac.state !== 'running' || !buf[name]) return;
+    if (muted || !ac) return;
+    if (ac.state !== 'running') { ac.resume().catch(() => {}); return; }   // e.g. Safari 'interrupted'
+    if (!buf[name]) return;
     const src = ac.createBufferSource();
     src.buffer = buf[name];
     src.playbackRate.value = rate;
@@ -60,8 +77,11 @@
     src.start();
   }
 
-  // a slightly different strike every time; spaces softer and lower
-  function key(ch) {
+  // a strike on every KEY_EVERY-th character (i = the character's place in the line, so the first
+  // always sounds); a slightly different strike every time; spaces softer and lower
+  const KEY_EVERY = 2;
+  function key(ch, i = 0) {
+    if (i % KEY_EVERY) return;
     if (ch === ' ' || ch === ' ') play('key', { rate: rnd(0.8, 0.86), gain: 0.5 });
     else play('key', { rate: rnd(0.92, 1.08), gain: rnd(0.8, 1) });
   }

@@ -630,11 +630,11 @@
       if (ctx.instant) { chars.forEach((c) => c.classList.add('on')); return; }
       const ms = +el.dataset.ms || TYPE_MS;
       return (async () => {
-        for (const c of chars) {
+        for (const [i, c] of chars.entries()) {
           if (ctx.token !== token) return;
           c.classList.add('on');
           c.after(caret);
-          if (window.SFX) SFX.key(c.textContent);            // sfx.js: typewriter strike
+          if (window.SFX) SFX.key(c.textContent, i);         // sfx.js: typewriter strike (every 2nd)
           await sleep(ms);
         }
         await sleep(250);
@@ -753,6 +753,10 @@
     maximize(ctx, id) {
       const w = win(id);
       if (!ctx.instant && window.SFX && !w.classList.contains('is-full')) SFX.big();
+      if (!w.classList.contains('is-full')) {      // remember the window's place for unmaximize()
+        const { left, top, width, height, zIndex } = w.style;
+        w.dataset.restore = JSON.stringify({ left, top, width, height, zIndex });
+      }
       w.classList.add('is-full');
       w.style.zIndex = 1500;
       Object.assign(w.style, { left: '0px', top: '0px', width: W + 'px', height: H + 'px' });
@@ -1014,6 +1018,19 @@
     if (time && v.duration) time.textContent = `${mmss(v.currentTime)} / ${mmss(v.duration)}`;
   };
   ['play', 'pause', 'ended', 'timeupdate', 'loadedmetadata'].forEach((t) => desk.addEventListener(t, playerUI, true));
+  // a full-screen video (ISEA) that plays to the end shrinks back to its window; menubar and taskbar return
+  function unmaximize(w) {
+    if (!w.classList.contains('is-full')) return;
+    let r = {};
+    try { r = JSON.parse(w.dataset.restore || '{}'); } catch (e) { /* keep the current place */ }
+    w.classList.remove('is-full');
+    Object.assign(w.style, r);
+    if ($$('.win.is-full.is-open', desk).length === 0) stage.classList.remove('fs');
+  }
+  desk.addEventListener('ended', (e) => {
+    const w = e.target.closest && e.target.closest('.win.is-full');
+    if (w) unmaximize(w);
+  }, true);
   // follow the montage frame by frame (timeupdate alone lags a cut by up to ~250 ms)
   const sysAt = (t) => sysNow(desk, Math.min(EN.length - 1, Math.floor(t / MONTAGE_SEG)));
   desk.addEventListener('timeupdate', (e) => { if (e.target.id === 'sys-video') sysAt(e.target.currentTime); }, true);
